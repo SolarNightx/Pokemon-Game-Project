@@ -1,0 +1,12 @@
+Abstract Classes:
+
+ - Pokemon (Only in battles)
+ - Bricks (CanCollide and stuff)
+ - Camera handler or something (Controls drawing)
+ - NPC
+
+Normal Classes:
+
+ - Player
+ - Battle NPC {extends NPC}
+ - Talking NPC {extends NPC}
