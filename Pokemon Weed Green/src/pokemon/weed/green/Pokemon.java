@@ -17,8 +17,10 @@ public abstract class Pokemon {
     int def;
     int specialAtk;
     int specialDef;
-    int status;
+    boolean confused;
     
     Moves[] moves = new Moves[4];
+    Status status = new Status();
+    //Sound cry = new Sound("");
     
 }
