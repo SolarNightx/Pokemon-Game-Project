@@ -1,0 +1,5 @@
+
+Stats:
+	HP: (|(2Base + IV + (EV / 4)) * Level| / 100) + Level + 10
+	
+	Other Stats: |(|(2Base + IV + (EV / 4)) * Level| / 100 + 5) * Nature|
