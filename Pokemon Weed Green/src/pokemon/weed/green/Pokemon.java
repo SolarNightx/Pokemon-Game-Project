@@ -18,6 +18,9 @@ public abstract class Pokemon {
     int specialAtk;
     int specialDef;
     boolean confused;
+    boolean gender;
+    int[] IVs = new int[5];
+    int[] EVs = new int[5];
     
     Moves[] moves = new Moves[4];
     Status status = new Status();

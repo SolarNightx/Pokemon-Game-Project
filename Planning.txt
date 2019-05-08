@@ -10,3 +10,10 @@ Normal Classes:
  - Battle NPC {extends NPC}
  - Talking NPC {extends NPC}
  - Camera handler or something (Controls drawing)
+
+
+Split:
+
+ - Darren - Tile, Objects, Player, Camera, Main
+ - Zach - Pokemon, Status, Moves, Pokeballs
+ - Liam - NPC, Interfaces, Battles
