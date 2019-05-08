@@ -3,6 +3,7 @@ Abstract Classes:
  - Pokemon (Only in battles)
  - Bricks (CanCollide and stuff)
  - NPC
+ - Pokeballs
 
 Normal Classes:
 
