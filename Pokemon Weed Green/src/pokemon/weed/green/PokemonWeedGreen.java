@@ -1,6 +1,7 @@
 package pokemon.weed.green;
 
 import DLibX.DConsole;
+import java.awt.Color;
 import java.io.File;
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -65,7 +66,14 @@ public class PokemonWeedGreen {
             }
             
             Player player = new Player(fileReader.nextInt(), fileReader.nextInt());
+            
         }
+        
+        dc.setPaint(new Color(255, 255, 255));
+        dc.fillRect(0, 0, consoleSize, consoleSize);
+        TextBox test = new TextBox(InterfaceType.TEXT_BOX);
+        test.drawTextBox(dc, new String[1]);
+        dc.redraw();
         
     }
     
