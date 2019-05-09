@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pokemon.weed.green;
 
-/**
- *
- * @author Darren H
- */
 public class TalkingNPC extends NPC {
     
-    String text;
-    
+    public TalkingNPC(int x, int y, int direction, String text) {
+        this.x = x;
+        this.y = y;
+        this.direction = direction;
+        this.text = text;
+    }
 }

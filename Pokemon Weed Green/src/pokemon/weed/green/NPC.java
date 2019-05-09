@@ -1,18 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pokemon.weed.green;
 
-/**
- *
- * @author Darren H
- */
+import java.awt.Image;
+
 public abstract class NPC {
     
-    int x;
-    int y;
-    int direction;
+    int x = 0;
+    int y = 0;
+    int direction = 0;
     
+    String text;
+    
+    TextBox textBox = new TextBox(InterfaceType.TEXT_BOX);
+    Image sprite;
+    
+    public void startConversation() {
+        
+    }
 }

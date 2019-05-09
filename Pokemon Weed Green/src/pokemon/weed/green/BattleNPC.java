@@ -1,18 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pokemon.weed.green;
 
-/**
- *
- * @author Darren H
- */
 public class BattleNPC extends NPC {
     
     String text;
     
     Pokemon[] pokemon = new Pokemon[6];
+    
+    public BattleNPC(int x, int y, int direction, String text, Pokemon[] pokemon) {
+        this.x = x;
+        this.y = y;
+        this.direction = direction;
+        this.text = text;
+        this.pokemon = pokemon;
+    }
+    
     
 }
