@@ -34,12 +34,13 @@ public abstract class Pokemon {
     //Sound cry = new Sound("");
     Random r = new Random();
 
-    public Pokemon(String name, int gender, int level, int[] base) {
+    public Pokemon(int level) {
 
-        this.gender = gender;
+        for (int i = 0; i < 6; i++) {
+            this.IVs[i] = r.nextInt(32);
+        }
+
         this.level = level;
-        this.name = name;
-        this.base = base;
 
         this.maxHP = (Math.abs((2 * base[0] + IVs[0] + (EVs[0] / 4)) * level) / 100) + level + 10;
         this.atk = ((Math.abs((2 * base[1] + IVs[1] + (EVs[1] / 4)) * level) / 100 + 5));
@@ -48,12 +49,6 @@ public abstract class Pokemon {
         this.specialDef = ((Math.abs((2 * base[1] + IVs[1] + (EVs[1] / 4)) * level) / 100 + 5));
         this.speed = ((Math.abs((2 * base[1] + IVs[1] + (EVs[1] / 4)) * level) / 100 + 5));
 
-    }
-
-    public void generatePkmn(String name, int gender, int level, int[] base) {
-        for (int i = 0; i < 6; i++) {
-            this.IVs[i] = r.nextInt(32);
-        }
     }
 
     public void moveSet(Moves[] moves) {
