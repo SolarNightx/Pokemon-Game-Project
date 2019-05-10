@@ -73,7 +73,9 @@ public class PokemonWeedGreen {
         dc.setPaint(new Color(255, 255, 255));
         dc.fillRect(0, 0, consoleSize, consoleSize);
         TextBox test = new TextBox(InterfaceType.BATTLE_TEXT_BOX);
+        Menu testMenu = new Menu(InterfaceType.BATTLE_MENU);
         test.drawTextBox(dc, new String[1]);
+        testMenu.drawMenu(dc);
         dc.redraw();
         
     }
