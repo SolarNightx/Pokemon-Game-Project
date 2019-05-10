@@ -3,14 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pokemon.weed.green;
+package pokemonList;
 
 import java.util.Random;
+import pokemon.weed.green.Pokemon;
 
 /**
  *
  * @author zachm
  */
+
 public class Garchomp extends Pokemon{
     
     int[] base = new int[6];
@@ -36,5 +38,5 @@ public class Garchomp extends Pokemon{
         updateStats(this.level, base);
         
     }
-    
+
 }

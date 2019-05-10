@@ -34,6 +34,8 @@ public abstract class Pokemon {
     //Sound cry = new Sound("");
     Random r = new Random();
 
+
+
     public Pokemon(String name) {
         
         for (int i = 0; i < 6; i++) {
@@ -42,11 +44,13 @@ public abstract class Pokemon {
         
         this.name = name;
 
+
     }
     
     public void gender(int gender) {
         this.gender = gender;
     }
+
 
     public void updateStats(int level, int[] base) {
         this.level = level;
