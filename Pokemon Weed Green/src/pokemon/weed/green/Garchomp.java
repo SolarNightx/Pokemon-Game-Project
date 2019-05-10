@@ -5,6 +5,8 @@
  */
 package pokemon.weed.green;
 
+import java.util.Random;
+
 /**
  *
  * @author zachm
@@ -12,10 +14,16 @@ package pokemon.weed.green;
 public class Garchomp extends Pokemon{
     
     int[] base = new int[6];
+    Random r = new Random();
+    String name;
+    int gender;
+    int level;
     
-    public Garchomp(String name, int gender, int level) {
+    public Garchomp(String name,int level) {
+        super("Garchomp");
         this.name = "Garchomp";
-        gender = r.nextInt(2);
+        this.gender = r.nextInt(2);
+        this.level = level;
         
         this.base[0] = 108;
         this.base[1] = 130;
@@ -24,6 +32,8 @@ public class Garchomp extends Pokemon{
         this.base[4] = 85;
         this.base[5] = 102;
         
+        gender(gender);
+        updateStats(this.level, base);
         
     }
     
