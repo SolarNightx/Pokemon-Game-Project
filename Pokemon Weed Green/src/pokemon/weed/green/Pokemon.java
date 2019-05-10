@@ -34,26 +34,29 @@ public abstract class Pokemon {
     //Sound cry = new Sound("");
     Random r = new Random();
 
-    public Pokemon(String name, int gender, int level, int[] base) {
-
-        this.gender = gender;
-        this.level = level;
-        this.name = name;
-        this.base = base;
-
-        this.maxHP = (Math.abs((2 * base[0] + IVs[0] + (EVs[0] / 4)) * level) / 100) + level + 10;
-        this.atk = ((Math.abs((2 * base[1] + IVs[1] + (EVs[1] / 4)) * level) / 100 + 5));
-        this.def = ((Math.abs((2 * base[1] + IVs[1] + (EVs[1] / 4)) * level) / 100 + 5));
-        this.specialAtk = ((Math.abs((2 * base[1] + IVs[1] + (EVs[1] / 4)) * level) / 100 + 5));
-        this.specialDef = ((Math.abs((2 * base[1] + IVs[1] + (EVs[1] / 4)) * level) / 100 + 5));
-        this.speed = ((Math.abs((2 * base[1] + IVs[1] + (EVs[1] / 4)) * level) / 100 + 5));
-
-    }
-
-    public void generatePkmn(String name, int gender, int level, int[] base) {
+    public Pokemon(String name) {
+        
         for (int i = 0; i < 6; i++) {
             this.IVs[i] = r.nextInt(32);
         }
+        
+        this.name = name;
+
+    }
+    
+    public void gender(int gender) {
+        this.gender = gender;
+    }
+
+    public void updateStats(int level, int[] base) {
+        this.level = level;
+        this.base = base;
+        this.maxHP = (Math.abs((2 * this.base[0] + IVs[0] + (EVs[0] / 4)) * this.level) / 100) + this.level + 10;
+        this.atk = (Math.abs((2 * this.base[1] + IVs[1] + (EVs[1] / 4)) * this.level) / 100 + 5);
+        this.def = (Math.abs((2 * this.base[2] + IVs[2] + (EVs[2] / 4)) * this.level) / 100 + 5);
+        this.specialAtk = (Math.abs((2 * this.base[3] + IVs[3] + (EVs[3] / 4)) * this.level) / 100 + 5);
+        this.specialDef = (Math.abs((2 * this.base[4] + IVs[4] + (EVs[4] / 4)) * this.level) / 100 + 5);
+        this.speed = (Math.abs((2 * this.base[5] + IVs[5] + (EVs[5] / 4)) * this.level) / 100 + 5);
     }
 
     public void moveSet(Moves[] moves) {
@@ -61,6 +64,6 @@ public abstract class Pokemon {
     }
 
     public void useMove(int b) {
-        moves[b].use();
+        //moves[b].use();
     }
 }
