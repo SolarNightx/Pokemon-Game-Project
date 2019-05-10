@@ -1,8 +1,8 @@
 
 Stats:
-	HP: (|(2 * Base + IV + (EV / 4)) * Level| / 100) + Level + 10
+	HP: (Math.abs((2 * Base + IV + (EV / 4)) * Level) / 100) + Level + 10
 	
-	Other Stats: |(|(2 * Base + IV + (EV / 4)) * Level| / 100 + 5) * Nature|
+	Other Stats: Math.abs((Math.abs((2 * Base + IV + (EV / 4)) * Level) / 100 + 5) * Nature)
 
 Damage:
 	Damage: (((2 + (2 * Level / 5)) * Power * (Attack / Defence)) / 50 + 2) * Modifier

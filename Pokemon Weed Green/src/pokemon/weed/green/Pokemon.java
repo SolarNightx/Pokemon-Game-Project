@@ -35,10 +35,7 @@ public abstract class Pokemon {
     Random r = new Random();
 
     public Pokemon(String name, int gender, int level, int[] base) {
-        for (int i = 0; i < 6; i++) {
-            this.IVs[i] = r.nextInt(32);
-            System.out.println(i);
-        }
+
         this.gender = gender;
         this.level = level;
         this.name = name;
@@ -53,10 +50,17 @@ public abstract class Pokemon {
 
     }
 
+    public void generatePkmn(String name, int gender, int level, int[] base) {
+        for (int i = 0; i < 6; i++) {
+            this.IVs[i] = r.nextInt(32);
+        }
+    }
+
     public void moveSet(Moves[] moves) {
         this.moves = moves;
     }
-    public void useMove(int b){
+
+    public void useMove(int b) {
         moves[b].use();
     }
 }
