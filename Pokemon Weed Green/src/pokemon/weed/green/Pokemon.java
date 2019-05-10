@@ -34,22 +34,8 @@ public abstract class Pokemon {
     //Sound cry = new Sound("");
     Random r = new Random();
 
-<<<<<<< HEAD
-    public Pokemon(int level) {
 
-        for (int i = 0; i < 6; i++) {
-            this.IVs[i] = r.nextInt(32);
-        }
 
-        this.level = level;
-
-        this.maxHP = (Math.abs((2 * base[0] + IVs[0] + (EVs[0] / 4)) * level) / 100) + level + 10;
-        this.atk = ((Math.abs((2 * base[1] + IVs[1] + (EVs[1] / 4)) * level) / 100 + 5));
-        this.def = ((Math.abs((2 * base[1] + IVs[1] + (EVs[1] / 4)) * level) / 100 + 5));
-        this.specialAtk = ((Math.abs((2 * base[1] + IVs[1] + (EVs[1] / 4)) * level) / 100 + 5));
-        this.specialDef = ((Math.abs((2 * base[1] + IVs[1] + (EVs[1] / 4)) * level) / 100 + 5));
-        this.speed = ((Math.abs((2 * base[1] + IVs[1] + (EVs[1] / 4)) * level) / 100 + 5));
-=======
     public Pokemon(String name) {
         
         for (int i = 0; i < 6; i++) {
@@ -57,7 +43,7 @@ public abstract class Pokemon {
         }
         
         this.name = name;
->>>>>>> 474fef5226974f0c030970b6f54400371797e7fe
+
 
     }
     
@@ -65,8 +51,7 @@ public abstract class Pokemon {
         this.gender = gender;
     }
 
-<<<<<<< HEAD
-=======
+
     public void updateStats(int level, int[] base) {
         this.level = level;
         this.base = base;
@@ -78,7 +63,6 @@ public abstract class Pokemon {
         this.speed = (Math.abs((2 * this.base[5] + IVs[5] + (EVs[5] / 4)) * this.level) / 100 + 5);
     }
 
->>>>>>> 474fef5226974f0c030970b6f54400371797e7fe
     public void moveSet(Moves[] moves) {
         this.moves = moves;
     }
