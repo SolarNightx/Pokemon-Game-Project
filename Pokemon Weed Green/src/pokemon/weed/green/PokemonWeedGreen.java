@@ -13,10 +13,10 @@ public class PokemonWeedGreen {
      */
     public static void main(String[] args) {
         final int consoleSize = 800; // Console Size
-        
+
         DConsole dc = new DConsole(consoleSize, consoleSize);
         dc.setOrigin(DConsole.ORIGIN_CENTER);
-        
+
         PrintStream output = null;
 
         Scanner fileReader = null;
@@ -49,13 +49,13 @@ public class PokemonWeedGreen {
                     t = fileReader.nextInt();
                 }
             }
-        
+
             for (int i = 0; i < worldObjects.length; i++) {
                 for (int j = 0; j < worldObjects[i].length; j++) {
                     t = fileReader.nextInt();
                 }
             }
-        
+
             for (int i = 0; i < worldNPCs.length; i++) {
                 for (int j = 0; j < worldNPCs[i].length; j++) {
                     t = fileReader.nextInt();
@@ -64,20 +64,24 @@ public class PokemonWeedGreen {
                     }
                 }
             }
-            
+
             Player player = new Player(fileReader.nextInt(), fileReader.nextInt());
-            
+
         }
-        
+
         dc.setOrigin(DConsole.ORIGIN_TOP_LEFT);
-        dc.setPaint(new Color(255, 255, 255));
-        dc.fillRect(0, 0, consoleSize, consoleSize);
         TextBox test = new TextBox(InterfaceType.BATTLE_TEXT_BOX);
         Menu testMenu = new Menu(InterfaceType.BATTLE_MENU);
-        test.drawTextBox(dc, new String[1]);
-        testMenu.drawMenu(dc);
-        dc.redraw();
-        
+
+        while (true) {
+            dc.setPaint(new Color(255, 255, 255));
+            dc.fillRect(0, 0, consoleSize, consoleSize);
+            test.drawTextBox(dc, new String[1]);
+            testMenu.drawMenu(dc);
+            dc.redraw();
+            dc.clear();
+        }
+
     }
-    
+
 }
