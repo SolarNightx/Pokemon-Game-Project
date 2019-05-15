@@ -11,6 +11,10 @@ public class Menu extends Interface {
         if (this.type == InterfaceType.BATTLE_MENU) {
             this.topLeft = new Point(this.consoleSize * 6 / 10 - 10, this.consoleSize * 15 / 20);
             this.bottomRight = new Point(this.consoleSize, this.consoleSize);
+        } else if (this.type == InterfaceType.TEXT_MENU) {
+            this.topLeft = new Point(this.consoleSize * 15 / 20, this.consoleSize * 11 / 20);
+            this.bottomRight = new Point(this.consoleSize * 9 / 10, this.consoleSize * 13 / 20);
+            
         }
     }
     
@@ -28,7 +32,7 @@ public class Menu extends Interface {
                 dc.drawRect(topLeft.x + i, topLeft.y - i, bottomRight.x - topLeft.x - i, bottomRight.y - topLeft.y + i);
             }
         } else if (this.type == InterfaceType.TEXT_MENU) {
-            
+            // Height ^ 4 = (1 / Length(maybe))x ^ 4 + y ^ 4
         }
     }
 }

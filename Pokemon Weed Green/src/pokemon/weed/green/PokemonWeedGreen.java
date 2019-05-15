@@ -70,13 +70,13 @@ public class PokemonWeedGreen {
         }
 
         dc.setOrigin(DConsole.ORIGIN_TOP_LEFT);
-        TextBox test = new TextBox(InterfaceType.BATTLE_TEXT_BOX);
-        Menu testMenu = new Menu(InterfaceType.BATTLE_MENU);
+        TextBox testBox = new TextBox(InterfaceType.TEXT_BOX);
+        Menu testMenu = new Menu(InterfaceType.TEXT_MENU);
 
-        while (true) {
+        while (true) { // Interfaces Testing
             dc.setPaint(new Color(255, 255, 255));
             dc.fillRect(0, 0, consoleSize, consoleSize);
-            test.drawTextBox(dc, new String[1]);
+            testBox.drawTextBox(dc, new String[1]);
             testMenu.drawMenu(dc);
             dc.redraw();
             dc.clear();
