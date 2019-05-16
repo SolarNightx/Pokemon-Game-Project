@@ -5,6 +5,8 @@
  */
 package pokemon.weed.green;
 
+import pokemonList.Pokemon;
+
 /**
  *
  * @author Darren H

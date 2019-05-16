@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pokemon.weed.green;
+package pokemonList;
 
 import java.util.Random;
+import pokemon.weed.green.Moves;
+import pokemon.weed.green.Status;
 
 /**
  *
@@ -25,7 +27,9 @@ public abstract class Pokemon {
     int level;
     boolean confused;
     //true = male 
+    public PType[] type = new PType[2];
     int gender;
+    int[] EVYield = new int[6];
     int[] IVs = new int[6];
     int[] EVs = new int[6];
     int[] base = new int[6];
@@ -44,7 +48,6 @@ public abstract class Pokemon {
         
         this.name = name;
 
-
     }
     
     public void gender(int gender) {
@@ -62,6 +65,10 @@ public abstract class Pokemon {
         this.specialDef = (Math.abs((2 * this.base[4] + IVs[4] + (EVs[4] / 4)) * this.level) / 100 + 5);
         this.speed = (Math.abs((2 * this.base[5] + IVs[5] + (EVs[5] / 4)) * this.level) / 100 + 5);
     }
+    
+    public void getEVYield(int[] EVYield){
+        this.EVYield = EVYield;
+    }
 
     public void moveSet(Moves[] moves) {
         this.moves = moves;
@@ -70,4 +77,9 @@ public abstract class Pokemon {
     public void useMove(int b) {
         //moves[b].use();
     }
+}
+
+enum PType {
+    FIRE, NORMAL, STEEL, DRAGON, FAIRY, ROCK, GROUND, ELECTRIC, FLYING, ICE, 
+    WATER, BUG, POISON, DARK, GRASS, PSYCHIC, GHOST, FIGHTING, NULL
 }

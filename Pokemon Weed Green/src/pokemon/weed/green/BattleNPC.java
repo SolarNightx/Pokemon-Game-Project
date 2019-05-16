@@ -1,5 +1,7 @@
 package pokemon.weed.green;
 
+import pokemonList.Pokemon;
+
 public class BattleNPC extends NPC {
     
     String text;
