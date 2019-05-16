@@ -5,24 +5,17 @@ import java.awt.Color;
 import java.awt.Point;
 
 public class TextBox extends Interface {
-    private static int screenSize = 800;
-    private static int borderSize = 10;
     private boolean nightMode = false;
     private String[] text;
-    
-    // Colours
-    public static Color textBoxWhite = new Color(180, 180, 250);
-    public static Color textBoxNight = new Color(0, 0, 30);
-    public static Color temporaryBorderColour = new Color(150, 150, 200);
     
     public TextBox(InterfaceType interfaceType) {
         this.type = interfaceType; // Set variables
         if (this.type == InterfaceType.BATTLE_TEXT_BOX) {
-            this.topLeft = new Point(0, screenSize * 15 / 20);
-            this.bottomRight = new Point(screenSize * 6 / 10, screenSize);
+            this.topLeft = new Point(0, this.consoleSize * 15 / 20);
+            this.bottomRight = new Point(this.consoleSize * 6 / 10, this.consoleSize);
         } else if (this.type == InterfaceType.TEXT_BOX) {
-            this.topLeft = new Point(screenSize / 10, screenSize * 7 / 10); // Temperary values
-            this.bottomRight  = new Point(screenSize * 9 / 10, screenSize * 9 / 10); // Temporary values
+            this.topLeft = new Point(this.consoleSize / 10, this.consoleSize * 7 / 10); // Temperary values
+            this.bottomRight  = new Point(this.consoleSize * 9 / 10, this.consoleSize * 9 / 10); // Temporary values
         }
     }
     
