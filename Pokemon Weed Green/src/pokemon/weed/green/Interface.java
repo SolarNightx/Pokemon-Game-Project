@@ -2,6 +2,7 @@ package pokemon.weed.green;
 
 import DLibX.DConsole;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Point;
 
 public abstract class Interface {
