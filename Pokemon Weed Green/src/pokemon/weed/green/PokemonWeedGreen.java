@@ -16,56 +16,20 @@ public class PokemonWeedGreen {
 
         DConsole dc = new DConsole(consoleSize, consoleSize);
         dc.setOrigin(DConsole.ORIGIN_CENTER);
+        
+        Decode decode = new Decode("World.txt");
 
-        PrintStream output = null;
+        Tile[][] worldTiles = new Tile[decode.getX()][decode.getY()];
+        Objects[][] worldObjects = new Objects[decode.getX()][decode.getY()];
+        NPC[][] worldNPCs = new NPC[decode.getX()][decode.getY()];
 
-        Scanner fileReader = null;
+        if (decode.getOpen() == true) {
+            
+            int[][] preTiles = decode.fromFile();
+            int[][] preObjects = decode.fromFile();
+            int[][] preNPCs = decode.fromFile();
 
-        boolean open = true;
-
-        try {
-            fileReader = new Scanner(new File("World.txt"));
-        } catch (Exception e) {
-            System.out.println("Couldn't open that file");
-            open = false;
-        }
-
-        int sizeX = 60;
-        int sizeY = 40;
-        int t = 0;
-
-        if (open == true) {
-            sizeX = fileReader.nextInt();
-            sizeY = fileReader.nextInt();
-        }
-
-        Tile[][] worldTiles = new Tile[sizeX][sizeY];
-        Objects[][] worldObjects = new Objects[sizeX][sizeY];
-        NPC[][] worldNPCs = new NPC[sizeX][sizeY];
-
-        if (open == true) {
-            for (int i = 0; i < worldTiles.length; i++) {
-                for (int j = 0; j < worldTiles[i].length; j++) {
-                    t = fileReader.nextInt();
-                }
-            }
-
-            for (int i = 0; i < worldObjects.length; i++) {
-                for (int j = 0; j < worldObjects[i].length; j++) {
-                    t = fileReader.nextInt();
-                }
-            }
-
-            for (int i = 0; i < worldNPCs.length; i++) {
-                for (int j = 0; j < worldNPCs[i].length; j++) {
-                    t = fileReader.nextInt();
-                    if (t == 0) {
-                        worldNPCs[i][j] = null;
-                    }
-                }
-            }
-
-            Player player = new Player(fileReader.nextInt(), fileReader.nextInt());
+            Player player = new Player(decode.singleVal(), decode.singleVal());
 
         }
 

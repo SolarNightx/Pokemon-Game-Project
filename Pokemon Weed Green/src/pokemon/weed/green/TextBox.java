@@ -14,8 +14,8 @@ public class TextBox extends Interface {
             this.topLeft = new Point(0, this.consoleSize * 15 / 20);
             this.bottomRight = new Point(this.consoleSize * 6 / 10, this.consoleSize);
         } else if (this.type == InterfaceType.TEXT_BOX) {
-            this.topLeft = new Point(this.consoleSize / 10, this.consoleSize * 7 / 10); // Temperary values
-            this.bottomRight  = new Point(this.consoleSize * 9 / 10, this.consoleSize * 9 / 10); // Temporary values
+            this.topLeft = new Point(this.consoleSize / 10, this.consoleSize * 15 / 20); // Temperary values
+            this.bottomRight  = new Point(this.consoleSize * 9 / 10, this.consoleSize * 19 / 20); // Temporary values
         }
     }
     
