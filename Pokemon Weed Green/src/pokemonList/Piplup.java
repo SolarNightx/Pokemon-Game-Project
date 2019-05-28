@@ -17,6 +17,9 @@ public class Piplup extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
+        this.sprites[0] = "393.png";
+        this.sprites[1] = "393b.png";
+        
         this.type[0] = PType.WATER;
         this.type[0] = PType.NULL;
 

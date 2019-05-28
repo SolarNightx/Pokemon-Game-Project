@@ -17,6 +17,9 @@ public class Torterra extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
+        this.sprites[0] = "389.png";
+        this.sprites[1] = "389b.png";
+        
         this.type[0] = PType.GRASS;
         this.type[0] = PType.GROUND;
 

@@ -17,6 +17,9 @@ public class Empoleon extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
+        this.sprites[0] = "395.png";
+        this.sprites[1] = "395b.png";
+        
         this.type[0] = PType.WATER;
         this.type[0] = PType.STEEL;
 

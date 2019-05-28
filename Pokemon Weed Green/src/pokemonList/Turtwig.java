@@ -18,6 +18,9 @@ public class Turtwig extends Pokemon{
         this.gender = r.nextInt(2);
         this.level = level;
 
+        this.sprites[0] = "387.png";
+        this.sprites[1] = "387b.png";
+        
         this.type[0] = PType.GRASS;
         this.type[0] = PType.NULL;
 

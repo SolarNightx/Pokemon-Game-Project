@@ -25,6 +25,9 @@ public abstract class Pokemon {
     int specialDef;
     int speed;
     int level;
+    
+    String[] sprites = {"000.png", "000b.png"};
+    
     boolean confused;
     //true = male 
     public PType[] type = new PType[2];

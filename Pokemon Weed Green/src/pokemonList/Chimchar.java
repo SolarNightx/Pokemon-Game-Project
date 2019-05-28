@@ -17,6 +17,9 @@ public class Chimchar extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
+        this.sprites[0] = "390.png";
+        this.sprites[1] = "390b.png";
+        
         this.type[0] = PType.FIRE;
         this.type[0] = PType.NULL;
 

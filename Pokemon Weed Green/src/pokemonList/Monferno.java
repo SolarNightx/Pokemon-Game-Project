@@ -17,6 +17,9 @@ public class Monferno extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
+        this.sprites[0] = "391.png";
+        this.sprites[1] = "391b.png";
+        
         this.type[0] = PType.FIRE;
         this.type[0] = PType.FIGHTING;
 
