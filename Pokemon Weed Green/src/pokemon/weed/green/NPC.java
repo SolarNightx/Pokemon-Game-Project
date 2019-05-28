@@ -1,5 +1,6 @@
 package pokemon.weed.green;
 
+import DLibX.DConsole;
 import java.awt.Image;
 import java.awt.Point;
 import java.util.Random;
@@ -7,16 +8,23 @@ import java.util.Random;
 public abstract class NPC {
     Random rng = new Random();
     
+    boolean moving;
+    int randomCounter = 0;
+    
     Point position;
+    Point oldPosition;
     Point topLeftBounds;
     Point bottomRightBounds;
-    int direction = 0;
-    boolean moving;
+    Direction direction;
     
     String text;
     
     TextBox textBox = new TextBox(InterfaceType.TEXT_BOX);
-    Image sprite;
+    String[] sprites;
+    
+    public void drawSprite(DConsole dc) {
+        
+    }
     
     public void startConversation() {
         
@@ -30,14 +38,18 @@ public abstract class NPC {
             if (rng.nextBoolean()) { // North - South
                 if (rng.nextBoolean() && this.position.y != 0 && this.position.y != this.topLeftBounds.y) { // North
                     targetTile = grid[this.position.x][this.position.y - 1];
+                    this.direction = Direction.NORTH;
                 } else if (this.position.y != grid[0].length && this.position.y != this.bottomRightBounds.y) { // South
                     targetTile = grid[this.position.x][this.position.y + 1];
+                    this.direction = Direction.SOUTH;
                 }
             } else { // West - East
                 if (rng.nextBoolean() && this.position.x != 0 && this.position.x != this.topLeftBounds.x) { // West
                     targetTile = grid[this.position.x - 1][this.position.y];
+                    this.direction = Direction.WEST;
                 } else if (this.position.x != grid.length && this.position.x != this.bottomRightBounds.x) { // East
                     targetTile = grid[this.position.x + 1][this.position.y];
+                    this.direction = Direction.WEST;
                 }
             }
             
@@ -47,5 +59,13 @@ public abstract class NPC {
                 targetTile = grid[this.position.x][this.position.y];
             }
         }
+    }
+    
+    public void randomTurn() {
+        
+    }
+    
+    public enum Direction {
+        NORTH, EAST, SOUTH, WEST
     }
 }
