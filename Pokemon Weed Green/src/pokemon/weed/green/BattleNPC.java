@@ -9,8 +9,8 @@ public class BattleNPC extends NPC {
     Pokemon[] pokemon = new Pokemon[6];
     
     public BattleNPC(int x, int y, int direction, String text, Pokemon[] pokemon) {
-        this.x = x;
-        this.y = y;
+        this.position.x = x;
+        this.position.y = y;
         this.direction = direction;
         this.text = text;
         this.pokemon = pokemon;

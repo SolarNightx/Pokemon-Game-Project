@@ -36,7 +36,10 @@ public class TextBox extends Interface {
                 dc.drawRect(topLeft.x + i, topLeft.y - i, bottomRight.x - topLeft.x - i, bottomRight.y - topLeft.y + i);
             }
         } else if (this.type == InterfaceType.TEXT_BOX) {
-            
+            // Untested
+            dc.drawRect(topLeft.x, topLeft.y, bottomRight.x - topLeft.x, bottomRight.y - topLeft.y);
+            dc.fillRect(topLeft.x, (bottomRight.y - topLeft.y) * 19 / 20 + topLeft.y, bottomRight.x - topLeft.x, (bottomRight.y - topLeft.y) * 19 / 20); 
+            dc.fillRect((bottomRight.x - topLeft.x) * 19 / 20 + topLeft.x, topLeft.y, (bottomRight.x - topLeft.x) * 19 / 20, bottomRight.y - topLeft.y);
         }
     }
 }
