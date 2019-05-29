@@ -17,6 +17,9 @@ public class Prinplup extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
+        this.sprites[0] = "394.png";
+        this.sprites[1] = "394b.png";
+        
         this.type[0] = PType.WATER;
         this.type[0] = PType.NULL;
 

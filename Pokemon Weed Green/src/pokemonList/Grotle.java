@@ -17,6 +17,9 @@ public class Grotle extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
+        this.sprites[0] = "388.png";
+        this.sprites[1] = "388b.png";
+        
         this.type[0] = PType.GRASS;
         this.type[0] = PType.NULL;
 
