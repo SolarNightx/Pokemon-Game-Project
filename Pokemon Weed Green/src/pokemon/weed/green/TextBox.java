@@ -21,19 +21,25 @@ public class TextBox extends Interface {
     
     public void drawTextBox(DConsole dc, String[] text) {
         dc.setOrigin(DConsole.ORIGIN_TOP_LEFT); // Set origin
-        if (nightMode) { // Check for night mode and set colour appropriately
+        // Check for night mode and set colour appropriately
+        if (nightMode) { 
             dc.setPaint(textBoxNight);
         } else {
             dc.setPaint(textBoxWhite);
         }
+        // Draw Box
         dc.fillRect(topLeft.x, topLeft.y, bottomRight.x - topLeft.x + 1, bottomRight.y - topLeft.y + 1); // Draw the inside of the textbox
         dc.setPaint(temporaryBorderColour);
+        // Borders
         if (this.type == InterfaceType.BATTLE_TEXT_BOX) {
             for (int i = 0; i < borderSize; i++) {
                 dc.drawRect(topLeft.x + i, topLeft.y - i, bottomRight.x - topLeft.x - i, bottomRight.y - topLeft.y + i);
             }
         } else if (this.type == InterfaceType.TEXT_BOX) {
-            
+            // Untested
+            dc.drawRect(topLeft.x, topLeft.y, bottomRight.x - topLeft.x, bottomRight.y - topLeft.y);
+            dc.fillRect(topLeft.x, (bottomRight.y - topLeft.y) * 19 / 20 + topLeft.y, bottomRight.x - topLeft.x, (bottomRight.y - topLeft.y) * 19 / 20); 
+            dc.fillRect((bottomRight.x - topLeft.x) * 19 / 20 + topLeft.x, topLeft.y, (bottomRight.x - topLeft.x) * 19 / 20, bottomRight.y - topLeft.y);
         }
     }
 }

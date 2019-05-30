@@ -34,7 +34,7 @@ public class Menu extends Interface {
         } else if (this.type == InterfaceType.TEXT_MENU) {
             // Height ^ 4 = (1 / Length(maybe))x ^ 4 + y ^ 4? (Not used)
             
-                
+            
         }
     }
 }

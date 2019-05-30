@@ -13,10 +13,12 @@ public class Garchomp extends Pokemon {
 
     public Garchomp(String name, int level) {
         super("Garchomp");
+
         this.name = "Garchomp";
         this.gender = r.nextInt(2);
         this.level = level;
-
+        this.sprites[0] = "445.png";
+        this.sprites[1] = "445b.png";
         this.type[0] = PType.DRAGON;
         this.type[0] = PType.GROUND;
 
