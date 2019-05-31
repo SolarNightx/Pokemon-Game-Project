@@ -17,4 +17,4 @@ Split:
 
  - Darren - Tile, Objects, Player, Camera, Main
  - Zach - Pokemon, Status, Moves, Pokeballs
- - Liam - NPC, Interfaces, Battles
+ - Liam - NPC, Interfaces, Battles (I'll do items...)

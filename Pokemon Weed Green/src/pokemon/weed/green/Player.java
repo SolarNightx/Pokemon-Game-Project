@@ -20,9 +20,9 @@ public class Player {
     int moveY;
     int walkSpeed;
     
-    Items[] items = new Items[20];
+    Backpack backpack = new Backpack();
     Pokemon[] pokemon = new Pokemon[6];
-    Pokemon[][] boxPokemon = new Pokemon[6][5];
+    Pokemon[][] boxPokemon = new Pokemon[6][5]; // This could be a 3D array for more than 1 box. Dunno tho.
     
     public Player(int x, int y) {
         

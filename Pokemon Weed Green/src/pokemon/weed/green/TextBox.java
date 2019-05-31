@@ -16,6 +16,9 @@ public class TextBox extends Interface {
         } else if (this.type == InterfaceType.TEXT_BOX) {
             this.topLeft = new Point(this.consoleSize / 10, this.consoleSize * 15 / 20); // Temperary values
             this.bottomRight  = new Point(this.consoleSize * 9 / 10, this.consoleSize * 19 / 20); // Temporary values
+        } else {
+            System.out.println("You tried to make a textbox become a menu. Wanna know what I say to that? YEET that command outta here. You know what? Have an error.");
+            throw new IndexOutOfBoundsException("There ya go!");
         }
     }
     

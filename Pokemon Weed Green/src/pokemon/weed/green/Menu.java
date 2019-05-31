@@ -14,7 +14,12 @@ public class Menu extends Interface {
         } else if (this.type == InterfaceType.TEXT_MENU) {
             this.topLeft = new Point(this.consoleSize * 15 / 20, this.consoleSize * 12 / 20);
             this.bottomRight = new Point(this.consoleSize * 9 / 10, this.consoleSize * 14 / 20);
+        } else if (this.type == InterfaceType.BACKPACK_MENU) {
             
+        } else if (this.type == InterfaceType.POKEMON_MENU) {
+            
+        } else {
+            System.out.println("You tried to make a menu become a textbox... What are you doing? Please. Stop. Now.");
         }
     }
     

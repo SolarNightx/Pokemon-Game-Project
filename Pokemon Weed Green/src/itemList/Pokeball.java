@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pokemon.weed.green;
+package itemList;
 
 /**
  *
- * @author Darren H
+ * @author William
  */
-public abstract class Items {
+public class Pokeball {
     
 }
