@@ -6,13 +6,25 @@ public class Battle {
     
     Pokemon[] playerMons;
     Pokemon[] foeMons;
+    Pokemon activePlayerMon;
+    Pokemon activeFoeMon;
     Menu menu = new Menu(InterfaceType.BATTLE_MENU);
     
     public Battle(Pokemon[] playerMons, Pokemon[] foeMons) {
         this.playerMons = playerMons;
         this.foeMons = foeMons;
+        activePlayerMon = playerMons[0];
+        activeFoeMon = foeMons[0];
     }
     
+    // Battle methods
+    public void startTurn() {
+        if (activePlayerMon.) {
+            
+        }
+    }
+    
+    // Menu methods
     public void drawMainMenu() {
         
     }

@@ -14,4 +14,8 @@ public class Backpack{
     public Backpack() {
         
     }
+    
+    public void useItem() {
+        
+    }
 }
