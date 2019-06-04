@@ -17,14 +17,14 @@ public abstract class Pokemon {
 
     String name;
     String ability;
-    int maxHP;
-    int HP;
-    int atk;
-    int def;
-    int specialAtk;
-    int specialDef;
-    int speed;
-    int level;
+    public int maxHP;
+    public int HP;
+    public int atk;
+    public int def;
+    public int specialAtk;
+    public int specialDef;
+    public int speed;
+    public int level;
     
     String[] sprites = {"000.png", "000b.png"};
     
