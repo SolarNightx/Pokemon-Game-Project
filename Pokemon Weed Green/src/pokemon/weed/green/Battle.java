@@ -18,10 +18,21 @@ public class Battle {
     }
     
     // Battle methods
-    public void startTurn() {
-        if (activePlayerMon.) {
+    public void startTurn(Moves playerMove, Moves foeMove) {
+        if (activePlayerMon.speed > activeFoeMon.speed && foeMove.priority <= playerMove.priority) {
+            playerAttack(playerMove);
+            foeAttack();
+        } else {
             
         }
+    }
+    
+    public void playerAttack(Moves playerMove) {
+        
+    }
+    
+    public void foeAttack(Moves foeMove) {
+        
     }
     
     // Menu methods
@@ -31,6 +42,10 @@ public class Battle {
     
     public void drawAttackMenu() {
         
+    }
+    
+    public boolean isSpacePressed() {
+        return false;
     }
     
     public void loadPokemonMenu() {
