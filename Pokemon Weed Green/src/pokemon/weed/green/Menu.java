@@ -6,7 +6,8 @@ import java.awt.Point;
 public class Menu extends Interface {
     boolean nightMode = false;
     
-    public Menu(InterfaceType interfaceType) {
+    public Menu(DConsole dc, InterfaceType interfaceType) {
+        this.dc = dc;
         this.type = interfaceType; // Set variables
         if (this.type == InterfaceType.BATTLE_MENU) {
             this.topLeft = new Point(this.consoleSize * 6 / 10 - 10, this.consoleSize * 15 / 20);
@@ -23,7 +24,7 @@ public class Menu extends Interface {
         }
     }
     
-    public void drawMenu(DConsole dc) {
+    public void drawMenu() {
         dc.setOrigin(DConsole.ORIGIN_TOP_LEFT); // Set origin
         if (nightMode) { // Check for night mode and set colour appropriately
             dc.setPaint(textBoxNight);

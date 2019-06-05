@@ -8,8 +8,9 @@ public class TextBox extends Interface {
     private boolean nightMode = false;
     private String[] text;
     
-    public TextBox(InterfaceType interfaceType) {
+    public TextBox(InterfaceType interfaceType, String[] text) {
         this.type = interfaceType; // Set variables
+        this.text = text;
         if (this.type == InterfaceType.BATTLE_TEXT_BOX) {
             this.topLeft = new Point(0, this.consoleSize * 15 / 20);
             this.bottomRight = new Point(this.consoleSize * 6 / 10, this.consoleSize);

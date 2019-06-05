@@ -8,6 +8,7 @@ import java.awt.Point;
 public abstract class Interface {
     Point topLeft;
     Point bottomRight;
+    DConsole dc;
     
     InterfaceType type;
     
