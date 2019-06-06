@@ -12,7 +12,12 @@ package pokemon.weed.green;
 public abstract class Moves {
     
     int baseDmg;
-    double status;
-    double chanceOfStstus;
+    int accuracy;
+    MoveType moveType;
+    double chanceOfStatus;
     
+}
+
+enum MoveType {
+    PHYSICAL, SPECIAL, STATUS
 }
