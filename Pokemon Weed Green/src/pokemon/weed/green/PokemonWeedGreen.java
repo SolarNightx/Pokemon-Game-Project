@@ -2,9 +2,6 @@ package pokemon.weed.green;
 
 import DLibX.DConsole;
 import java.awt.Color;
-import java.io.File;
-import java.io.PrintStream;
-import java.util.Scanner;
 
 public class PokemonWeedGreen {
 
