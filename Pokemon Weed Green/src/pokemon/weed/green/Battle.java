@@ -14,6 +14,11 @@ public class Battle {
     Random rng = new Random();
     int damage = 0;
     
+    // Variables that go into damage calc
+    double random = 0;
+    double modifier = 0;
+    double stab = 1.00;
+    
     public Battle(DConsole dc, Pokemon[] playerMons, Pokemon[] foeMons) {
         menu = new Menu(dc, InterfaceType.BATTLE_MENU);
         this.playerMons = playerMons;
@@ -41,17 +46,42 @@ public class Battle {
         }
     }
     
+    /* Damage formula:
+        Damage: (((2 + (2 * Level / 5)) * Power * (Attack / Defence)) / 50 + 2) * Modifier
+	Modifier: #Targets * Weather * Badge * Crit * STAB * Type * Burn * Other * Random    
+        Random: (rng.nextInt(15) + 85) / 100.00;
+    */
+    
     public void playerAttack(Moves playerMove) {
         if (rng.nextInt(100) < (playerMove.accuracy)) { // Accuracy Check (Prob will change.)
-            if (playerMove.moveType == MoveType.PHYSICAL || playerMove.moveType == MoveType.SPECIAL) {
-                // Do damage
+            if (playerMove.moveType == MoveType.PHYSICAL) {
+                // Random
+                random = (rng.nextInt(15) + 85) / 100;
+                // modifier
+                if (activePlayerMon.type[0] == playerMove.type || activePlayerMon.type[1] == playerMove.type) {
+                    stab = 1.50;
+                } else {
+                    stab = 1.00;
+                }
+                modifier = stab * random; // More should be added
+                // Set damage
+                damage = (int)((((2 + (2 * activePlayerMon.level / 5)) * playerMove.power * (activePlayerMon.atk / activePlayerMon.def)) / 50 + 2) * modifier);
+            } else if (playerMove.moveType == MoveType.SPECIAL) {
+                
             }
-            // Do effect (even if status move)
+            playerMove.useEffect(activeFoeMon, rng);
         }
     }
     
     public void foeAttack(Moves foeMove) {
-        
+        if (rng.nextInt(100) < (foeMove.accuracy)) { // Accuracy Check (Prob will change.)
+            if (foeMove.moveType == MoveType.PHYSICAL) {
+                // Set damage
+            } else if (foeMove.moveType == MoveType.SPECIAL) {
+                
+            }
+            foeMove.useEffect(activeFoeMon, rng);
+        }
     }
     
     // Menu methods

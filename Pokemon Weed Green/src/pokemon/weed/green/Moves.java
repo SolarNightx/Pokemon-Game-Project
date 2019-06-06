@@ -1,23 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pokemon.weed.green;
 
-/**
- *
- * @author Darren H
- */
+import java.util.Random;
+import pokemonList.Pokemon;
+
 public abstract class Moves {
     
-    int baseDmg;
+    int power;
     int accuracy;
     MoveType moveType;
-    double chanceOfStatus;
+    int chanceOfStatus;
+    PType type;
+    
+    public void useEffect(Pokemon target, Random rng) {
+        // Roll Number
+        if (rng.nextInt() > chanceOfStatus) {
+            // Do effect here.
+        }
+    }
     
 }
 
 enum MoveType {
     PHYSICAL, SPECIAL, STATUS
+}
+
+enum PType {
+    FIRE, NORMAL, STEEL, DRAGON, FAIRY, ROCK, GROUND, ELECTRIC, FLYING, ICE, 
+    WATER, BUG, POISON, DARK, GRASS, PSYCHIC, GHOST, FIGHTING, NULL
 }
