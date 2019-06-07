@@ -8,6 +8,7 @@ package pokemonList;
 import java.util.Random;
 import pokemon.weed.green.Moves;
 import pokemon.weed.green.Status;
+import pokemon.weed.green.Type;
 
 /**
  *
@@ -30,7 +31,7 @@ public abstract class Pokemon {
     
     boolean confused;
     //true = male 
-    public PType[] type = new PType[2];
+    public Type[] type = new Type[2];
     int gender;
     int[] EVYield = new int[6];
     int[] IVs = new int[6];
@@ -80,9 +81,4 @@ public abstract class Pokemon {
     public void useMove(int b) {
         //moves[b].use();
     }
-}
-
-enum PType {
-    FIRE, NORMAL, STEEL, DRAGON, FAIRY, ROCK, GROUND, ELECTRIC, FLYING, ICE, 
-    WATER, BUG, POISON, DARK, GRASS, PSYCHIC, GHOST, FIGHTING, NULL
 }

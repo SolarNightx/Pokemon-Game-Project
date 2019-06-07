@@ -8,7 +8,7 @@ public class TextBox extends Interface {
     private boolean nightMode = false;
     private String[] text;
     
-    public TextBox(InterfaceType interfaceType, String[] text) {
+    public TextBox(DConsole dc, InterfaceType interfaceType, String[] text) {
         this.type = interfaceType; // Set variables
         this.text = text;
         if (this.type == InterfaceType.BATTLE_TEXT_BOX) {
@@ -23,7 +23,7 @@ public class TextBox extends Interface {
         }
     }
     
-    public void drawTextBox(DConsole dc, String[] text) {
+    public void drawTextBox(String[] text) {
         dc.setOrigin(DConsole.ORIGIN_TOP_LEFT); // Set origin
         // Check for night mode and set colour appropriately
         if (nightMode) { 

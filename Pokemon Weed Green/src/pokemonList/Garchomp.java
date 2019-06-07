@@ -5,10 +5,8 @@
  */
 package pokemonList;
 
-/**
- *
- * @author zachm
- */
+import pokemon.weed.green.Type;
+
 public class Garchomp extends Pokemon {
 
     public Garchomp(String name, int level) {
@@ -19,8 +17,8 @@ public class Garchomp extends Pokemon {
         this.level = level;
         this.sprites[0] = "445.png";
         this.sprites[1] = "445b.png";
-        this.type[0] = PType.DRAGON;
-        this.type[0] = PType.GROUND;
+        this.type[0] = new Type(Type.PType.DRAGON);
+        this.type[1] = new Type(Type.PType.GROUND);
 
         //hp
         this.base[0] = 108;

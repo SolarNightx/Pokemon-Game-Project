@@ -58,7 +58,7 @@ public class Battle {
                 // Random
                 random = (rng.nextInt(15) + 85) / 100;
                 // modifier
-                if (activePlayerMon.type[0] == playerMove.type || activePlayerMon.type[1] == playerMove.type) {
+                if (activePlayerMon.type[0].type == playerMove.type.type || activePlayerMon.type[1].type == playerMove.type.type) {
                     stab = 1.50;
                 } else {
                     stab = 1.00;
@@ -86,19 +86,19 @@ public class Battle {
     
     // Menu methods
     public void drawMainMenu() {
-        
+        menu.type = InterfaceType.BATTLE_MENU;
     }
     
     public void drawAttackMenu() {
-        
+        menu.type = InterfaceType.BATTLE_MENU;
     }
     
     public void loadPokemonMenu() {
-        
+        menu.type = InterfaceType.POKEMON_MENU;
     }
     
     public void loadBackpackMenu() {
-        
+        menu.type = InterfaceType.BACKPACK_MENU;
     }
     
     // Key presses

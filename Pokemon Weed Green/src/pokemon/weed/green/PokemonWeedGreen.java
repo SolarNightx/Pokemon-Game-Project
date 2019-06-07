@@ -31,14 +31,14 @@ public class PokemonWeedGreen {
         }
 
         dc.setOrigin(DConsole.ORIGIN_TOP_LEFT);
-        TextBox testBox = new TextBox(InterfaceType.TEXT_BOX);
-        Menu testMenu = new Menu(InterfaceType.TEXT_MENU);
+        TextBox testBox = new TextBox(dc, InterfaceType.TEXT_BOX);
+        Menu testMenu = new Menu(dc, InterfaceType.TEXT_MENU);
 
         while (true) { // Interfaces Testing
             dc.setPaint(new Color(255, 255, 255));
             dc.fillRect(0, 0, consoleSize, consoleSize);
             testBox.drawTextBox(dc, new String[1]);
-            testMenu.drawMenu(dc);
+            testMenu.drawMenu();
             dc.redraw();
             dc.clear();
         }

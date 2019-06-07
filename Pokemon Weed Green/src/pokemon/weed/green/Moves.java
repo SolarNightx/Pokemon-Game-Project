@@ -7,9 +7,10 @@ public abstract class Moves {
     
     int power;
     int accuracy;
+    int priority;
     MoveType moveType;
     int chanceOfStatus;
-    PType type;
+    public Type type;
     
     public void useEffect(Pokemon target, Random rng) {
         // Roll Number
@@ -22,9 +23,4 @@ public abstract class Moves {
 
 enum MoveType {
     PHYSICAL, SPECIAL, STATUS
-}
-
-enum PType {
-    FIRE, NORMAL, STEEL, DRAGON, FAIRY, ROCK, GROUND, ELECTRIC, FLYING, ICE, 
-    WATER, BUG, POISON, DARK, GRASS, PSYCHIC, GHOST, FIGHTING, NULL
 }
