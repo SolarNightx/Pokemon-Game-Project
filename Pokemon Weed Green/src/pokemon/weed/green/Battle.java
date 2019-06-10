@@ -122,6 +122,11 @@ public class Battle {
         }
     }
     
+    public double typeEffectiveness() {
+        
+        return 1.00;
+    }
+    
     // Pokemon methods
     public void drawPokemon() {
         // Should animate deaths.
