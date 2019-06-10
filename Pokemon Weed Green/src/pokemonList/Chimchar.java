@@ -5,6 +5,8 @@
  */
 package pokemonList;
 
+
+import pokemon.weed.green.Type;
 /**
  *
  * @author biggsz
@@ -20,8 +22,8 @@ public class Chimchar extends Pokemon {
         this.sprites[0] = "390.png";
         this.sprites[1] = "390b.png";
         
-        this.type[0] = PType.FIRE;
-        this.type[0] = PType.NULL;
+        this.type[0] = new Type(Type.PType.FIRE);
+        this.type[1] = new Type(Type.PType.NULL);
 
         //hp
         this.base[0] = 44;

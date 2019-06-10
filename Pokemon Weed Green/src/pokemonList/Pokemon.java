@@ -27,7 +27,7 @@ public abstract class Pokemon {
     public int speed;
     public int level;
     
-    String[] sprites = {"000.png", "000b.png"};
+    public String[] sprites = {"000.png", "000b.png"};
     
     boolean confused;
     //true = male 

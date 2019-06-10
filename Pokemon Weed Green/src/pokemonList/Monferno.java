@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pokemonList;
 
+
+import pokemon.weed.green.Type;
 /**
  *
  * @author biggsz
@@ -20,8 +17,8 @@ public class Monferno extends Pokemon {
         this.sprites[0] = "391.png";
         this.sprites[1] = "391b.png";
         
-        this.type[0] = PType.FIRE;
-        this.type[0] = PType.FIGHTING;
+        this.type[0] = new Type(Type.PType.FIRE);
+        this.type[1] = new Type(Type.PType.FIGHTING);
 
         //hp
         this.base[0] = 64;
