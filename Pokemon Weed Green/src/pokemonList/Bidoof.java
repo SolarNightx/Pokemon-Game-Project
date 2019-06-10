@@ -5,6 +5,8 @@
  */
 package pokemonList;
 
+
+import pokemon.weed.green.Type;
 /**
  *
  * @author biggsz
@@ -20,8 +22,8 @@ public class Bidoof extends Pokemon {
         this.sprites[0] = "TheTrueGod.png";
         this.sprites[1] = "TheTrueGodb.png";
         
-        this.type[0] = PType.NORMAL;
-        this.type[0] = PType.NULL;
+        this.type[0] = new Type(Type.PType.NORMAL);
+        this.type[1] = new Type(Type.PType.NULL);
 
         //hp
         this.base[0] = 59;
