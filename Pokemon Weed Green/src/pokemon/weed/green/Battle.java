@@ -12,6 +12,7 @@ public class Battle {
     Pokemon activeFoeMon;
     Menu menu;
     Random rng = new Random();
+    DConsole dc;
     int damage = 0;
     
     // Variables that go into damage calc
@@ -20,6 +21,7 @@ public class Battle {
     double stab = 1.00;
     
     public Battle(DConsole dc, Pokemon[] playerMons, Pokemon[] foeMons) {
+        this.dc = dc;
         menu = new Menu(dc, InterfaceType.BATTLE_MENU);
         this.playerMons = playerMons;
         this.foeMons = foeMons;
@@ -65,10 +67,21 @@ public class Battle {
                 }
                 modifier = stab * random; // More should be added
                 // Set damage
-                damage = (int)((((2 + (2 * activePlayerMon.level / 5)) * playerMove.power * (activePlayerMon.atk / activePlayerMon.def)) / 50 + 2) * modifier);
+                damage = (int)((((2 + (2 * activePlayerMon.level / 5)) * playerMove.power * (activePlayerMon.atk / activeFoeMon.def)) / 50 + 2) * modifier);
             } else if (playerMove.moveType == MoveType.SPECIAL) {
-                
+                // Random
+                random = (rng.nextInt(15) + 85) / 100;
+                // modifier
+                if (activePlayerMon.type[0].type == playerMove.type.type || activePlayerMon.type[1].type == playerMove.type.type) {
+                    stab = 1.50;
+                } else {
+                    stab = 1.00;
+                }
+                modifier = stab * random; // More should be added
+                // Set damage
+                damage = (int)((((2 + (2 * activePlayerMon.level / 5)) * playerMove.power * (activePlayerMon.specialAtk / activeFoeMon.specialDef)) / 50 + 2) * modifier);
             }
+            // Use the effect of the move
             playerMove.useEffect(activeFoeMon, rng);
         }
     }
@@ -76,11 +89,47 @@ public class Battle {
     public void foeAttack(Moves foeMove) {
         if (rng.nextInt(100) < (foeMove.accuracy)) { // Accuracy Check (Prob will change.)
             if (foeMove.moveType == MoveType.PHYSICAL) {
+                // Random
+                random = (rng.nextInt(15) + 85) / 100;
+                // modifier
+                if (activeFoeMon.type[0].type == foeMove.type.type || activeFoeMon.type[1].type == foeMove.type.type) {
+                    stab = 1.50;
+                } else {
+                    stab = 1.00;
+                }
+                modifier = stab * random; // More should be added
                 // Set damage
+                damage = (int)((((2 + (2 * activeFoeMon.level / 5)) * foeMove.power * (activeFoeMon.atk / activePlayerMon.def)) / 50 + 2) * modifier);
+                // You still take the damage!!!!! We should animate this later with a different display HP variable.
+                activePlayerMon.HP -= damage;
             } else if (foeMove.moveType == MoveType.SPECIAL) {
-                
+                // Random
+                random = (rng.nextInt(15) + 85) / 100;
+                // modifier
+                if (activeFoeMon.type[0].type == foeMove.type.type || activeFoeMon.type[1].type == foeMove.type.type) {
+                    stab = 1.50;
+                } else {
+                    stab = 1.00;
+                }
+                modifier = stab * random; // More should be added
+                // Set damage
+                damage = (int)((((2 + (2 * activeFoeMon.level / 5)) * foeMove.power * (activeFoeMon.specialAtk / activePlayerMon.specialDef)) / 50 + 2) * modifier);
+                // You still take the damage!!!!! We should animate this later.
+                activePlayerMon.HP -= damage;
             }
+            // Use the effect of the move
             foeMove.useEffect(activeFoeMon, rng);
+        }
+    }
+    
+    // Pokemon methods
+    public void drawPokemon() {
+        // Should animate deaths.
+        if (activePlayerMon.HP > 0) {
+            dc.drawImage(activePlayerMon.sprites[0], dc.getWidth() * 3 / 10, dc.getHeight() * 7 / 10);
+        }
+        if (activeFoeMon.HP > 0) {
+            dc.drawImage(activeFoeMon.sprites[1], dc.getWidth() * 7 / 10, dc.getHeight() * 3 / 10);
         }
     }
     
