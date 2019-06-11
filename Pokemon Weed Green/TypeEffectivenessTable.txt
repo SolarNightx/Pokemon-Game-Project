@@ -1,19 +1,20 @@
-NULL NORMAL FIGHTING GRASS WATER FIRE BUG FLYING ROCK GROUND STEEL DARK PSYCHIC GHOST FAIRY DRAGON ICE ELECTRIC POISON
-NORMAL
-FIGHTING
-GRASS
-WATER
-FIRE
-BUG
-FLYING
-ROCK
-GROUND
-STEEL
-DARK
-PSYCHIC
-GHOST
-FAIRY
-DRAGON
-ICE
-ELECTRIC
-POISON
+     Atk NORMAL FIGHTING GRASS WATER FIRE BUG FLYING ROCK GROUND STEEL DARK PSYCHIC GHOST FAIRY DRAGON ICE ELECTRIC POISON
+Def
+NORMAL 	   1       2       1     1    1    1    1     1      1     1     1     1      1     1      1    1      1       1
+FIGHTING   1       1       1     1    1   0.5   2    0.5     1    0.5   0.5    2      1     2      1    1      1       1
+GRASS      1       1      0.5   0.5   2    2    2     1     0.5    1     1     1      1     1      1    2     0.5      2
+WATER      1       1       2    0.5  0.5   1    1     1      1    0.5    1     1      1     1      1   0.5     2       1
+FIRE       1       1      0.5    2   0.5  0.5   1     2      2    0.5    1     1      1    0.5     1   0.5     1       1 
+BUG        1      0.5     0.5    1    2    1    2     2     0.5    1     1     1      1     1      1    1      1       1
+FLYING     1      0.5     0.5    1    1   0.5   1     2      0     1     1     1      1     1      1    2      2       1
+ROCK      0.5      2       2     2   0.5   1   0.5    1      2     2     1     1      1     1      1   0.5     1      0.5
+GROUND     1       1       2     2   0.5   1    1    0.5     1     1     1     1      1     1      1    2      0      0.5
+STEEL     0.5      2      0.5    1    2   0.5  0.5   0.5     2    0.5    1    0.5     1    0.5    0.5  0.5     1       0
+DARK       1       2       1     1    1    2    1     1      1     1    0.5    0     0.5    2      1    1      1       1
+PSYCHIC    1      0.5      1     1    1    2    1     1      1     1     2    0.5     2     1      1    1      1       1
+GHOST      0       0       1     1    1   0.5   1     1      1     1     2     1      2     1      1    1      1      0.5
+FAIRY      1      0.5      1     1    1   0.5   1     1      1     2    0.5    1      1     1      0    1      1       2
+DRAGON     1       1      0.5   0.5  0.5   1    1     1      1     1     1     1      1     2      2    2     0.5      1
+ICE        1       2       1     1    2    1    1     2      1     2     1     1      1     1      1   0.5     1       1
+ELECTRIC   1       1       1     1    1    1   0.5    1      2    0.5    1     1      1     1      1    1     0.5      1
+POISON     1      0.5     0.5    1    1   0.5   1     1      2     1     1     2      1    0.5     1    1      1      0.5
