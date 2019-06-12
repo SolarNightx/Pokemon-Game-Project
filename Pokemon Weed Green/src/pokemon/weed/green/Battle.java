@@ -20,6 +20,9 @@ public class Battle {
     double modifier = 0;
     double stab = 1.00;
     
+    
+    
+    
     public Battle(DConsole dc, Pokemon[] playerMons, Pokemon[] foeMons) {
         this.dc = dc;
         menu = new Menu(dc, InterfaceType.BATTLE_MENU);
@@ -27,6 +30,14 @@ public class Battle {
         this.foeMons = foeMons;
         activePlayerMon = playerMons[0];
         activeFoeMon = foeMons[0];
+        
+        // Get table for type effectiveness
+        Decode decoder = new Decode("TypeEffectivenessFile.txt");
+        if (decoder.getOpen()) {
+            double[][] typeEffectiveness = decoder.fromFileDouble();
+        } else {
+            System.out.println("No effectiveness chart found. All moves do 1.0x daamge.");
+        }
     }
     
     // Battle methods

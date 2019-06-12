@@ -14,7 +14,7 @@ public abstract class Moves {
     
     public void useEffect(Pokemon target, Random rng) {
         // Roll Number
-        if (rng.nextInt() > chanceOfStatus) {
+        if (rng.nextInt(100) + 1 > chanceOfStatus) {
             // Do effect here.
         }
     }

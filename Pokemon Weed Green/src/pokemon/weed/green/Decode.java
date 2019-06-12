@@ -58,6 +58,21 @@ public class Decode {
         
     }
     
+    public double[][] fromFileDouble() {
+        
+        double[][] world = new double[this.x][this.y];
+        
+        if (this.open == true) {
+            for (int i = 0; i < world.length; i++) {
+                for (int j = 0; j < world[i].length; j++) {
+                    world[i][j] = this.fileReader.nextDouble();
+                }
+            }
+        }
+        
+        return world;
+    }
+    
     public boolean getOpen() {
         return open;
     }

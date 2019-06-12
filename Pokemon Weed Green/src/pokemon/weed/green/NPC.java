@@ -7,6 +7,7 @@ import java.util.Random;
 
 public abstract class NPC {
     Random rng = new Random();
+    DConsole dc;
     
     boolean moving;
     int randomCounter = 0;
@@ -17,9 +18,9 @@ public abstract class NPC {
     Point bottomRightBounds;
     Direction direction;
     
-    String text;
+    String[] text;
     
-    TextBox textBox = new TextBox(InterfaceType.TEXT_BOX);
+    TextBox textBox = new TextBox(dc, InterfaceType.TEXT_BOX, text);
     String[] sprites;
     
     public void drawSprite(DConsole dc) {

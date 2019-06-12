@@ -2,6 +2,7 @@ package pokemon.weed.green;
 
 import DLibX.DConsole;
 import java.awt.Color;
+import pokemonList.*;
 
 public class PokemonWeedGreen {
 
@@ -31,15 +32,19 @@ public class PokemonWeedGreen {
         }
 
         dc.setOrigin(DConsole.ORIGIN_TOP_LEFT);
-        TextBox testBox = new TextBox(dc, InterfaceType.TEXT_BOX);
-        Menu testMenu = new Menu(dc, InterfaceType.TEXT_MENU);
+        Pokemon[] pokemon1 = new Pokemon[6];
+        Pokemon[] pokemon2 = new Pokemon[6];
+        pokemon1[0] = new Empoleon("Empoleon", 36); // NOTE: It says that these are not Pokemon and casting doesn't work. Figure it out.
+        pokemon1[1] = new Luxray("Luxray", 40);
+        pokemon2[0] = new Bidoof("Bidoof", 12);
+        
+        Battle battle = new Battle(dc, pokemon1, pokemon2);
 
-        while (true) { // Interfaces Testing
-            dc.setPaint(new Color(255, 255, 255));
-            dc.fillRect(0, 0, consoleSize, consoleSize);
-            testBox.drawTextBox(dc, new String[1]);
-            testMenu.drawMenu();
+        while (true) { // Testing Area
+            battle.drawPokemon();
+            battle.drawMainMenu();
             dc.redraw();
+            dc.pause(30);
             dc.clear();
         }
 
