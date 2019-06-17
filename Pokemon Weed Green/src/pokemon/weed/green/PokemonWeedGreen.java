@@ -1,7 +1,6 @@
 package pokemon.weed.green;
 
 import DLibX.DConsole;
-import java.awt.Color;
 import pokemonList.*;
 
 public class PokemonWeedGreen {
