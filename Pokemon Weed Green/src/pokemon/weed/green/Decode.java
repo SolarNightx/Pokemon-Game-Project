@@ -33,7 +33,7 @@ public class Decode {
         }
 
         this.x = 480;
-        this.y = 40;
+        this.y = 480;
 
         if (this.open == true) {
             this.x = this.fileReader.nextInt();
@@ -87,6 +87,14 @@ public class Decode {
     
     public int singleVal() {
         return this.fileReader.nextInt();
+    }
+    
+    public String singleString() {
+        return this.fileReader.nextLine();
+    }
+    
+    public boolean singleBoolean() {
+        return this.fileReader.nextBoolean();
     }
     
 }

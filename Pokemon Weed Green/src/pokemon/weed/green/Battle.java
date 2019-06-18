@@ -183,7 +183,7 @@ public class Battle {
             if (dc.getKeyPress(88)) { // Back to main menu
                 this.drawMainMenu();
             } else if (dc.getKeyPress(90)) { // Select move (z)
-                this.generateFoeAttack();
+                //this.generateFoeAttack();
                 this.storedPlayerAttack = activePlayerMon.getMove(currentMenuOption);
                 
             }
