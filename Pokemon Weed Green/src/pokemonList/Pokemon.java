@@ -42,8 +42,6 @@ public abstract class Pokemon {
     //Sound cry = new Sound("");
     Random r = new Random();
 
-
-
     public Pokemon(String name) {
         
         for (int i = 0; i < 6; i++) {
@@ -78,7 +76,7 @@ public abstract class Pokemon {
         this.moves = moves;
     }
 
-    public void useMove(int b) {
-        //moves[b].use();
+    public Moves getMove(int moveSlot) {
+        return moves[moveSlot];
     }
 }

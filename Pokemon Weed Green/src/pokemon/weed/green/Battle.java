@@ -12,16 +12,16 @@ public class Battle {
     Pokemon activeFoeMon;
     Menu menu;
     Random rng = new Random();
+    Moves storedFoeAttack = null;
+    Moves storedPlayerAttack = null;
     DConsole dc;
     int damage = 0;
+    int currentMenuOption = 0;
     
     // Variables that go into damage calc
     double random = 0;
     double modifier = 0;
     double stab = 1.00;
-    
-    
-    
     
     public Battle(DConsole dc, Pokemon[] playerMons, Pokemon[] foeMons) {
         this.dc = dc;
@@ -151,6 +151,50 @@ public class Battle {
     }
     
     // Menu methods
+    
+    public void checkInputs() {
+        if (this.menu.type == InterfaceType.MAIN_BATTLE_MENU) {
+            // Four square based system. Cannot navigate past borders.
+            // 0 1     Pressing down adds 2, pressing right adds 1,
+            // 2 3     and the other way subtracts.
+            if (this.currentMenuOption > 1 && dc.getKeyPress(38)) { // Up
+                this.currentMenuOption -= 2;
+            } else if (this.currentMenuOption < 2 && dc.getKeyPress(40)) { // Down
+                this.currentMenuOption += 2;
+            } else if (this.currentMenuOption % 2 == 1 && dc.getKeyPress(37)) { // Left
+                this.currentMenuOption--;
+            } else if (this.currentMenuOption % 2 == 0 && dc.getKeyPress(39)) { // Right
+                this.currentMenuOption++;
+            }
+        } else if (this.menu.type == InterfaceType.BATTLE_MENU) {
+            // Four square based system. Cannot navigate past borders or null squares.
+            // 0 1     Pressing down adds 2, pressing right adds 1,
+            // 2 3     and the other way subtracts.
+            if (this.currentMenuOption > 1 && dc.getKeyPress(38) && activePlayerMon.getMove(currentMenuOption - 2) != null) { // Up
+                this.currentMenuOption -= 2;
+            } else if (this.currentMenuOption < 2 && dc.getKeyPress(40) && activePlayerMon.getMove(currentMenuOption + 2) != null) { // Down
+                this.currentMenuOption += 2;
+            } else if (this.currentMenuOption % 2 == 1 && dc.getKeyPress(37) && activePlayerMon.getMove(currentMenuOption - 1) != null) { // Left
+                this.currentMenuOption--;
+            } else if (this.currentMenuOption % 2 == 0 && dc.getKeyPress(39) && activePlayerMon.getMove(currentMenuOption + 1) != null) { // Right
+                this.currentMenuOption++;
+            }
+            // Selection key presses
+            if (dc.getKeyPress(88)) { // Back to main menu
+                this.drawMainMenu();
+            } else if (dc.getKeyPress(90)) { // Select move (z)
+                this.generateFoeAttack();
+                this.storedPlayerAttack = activePlayerMon.getMove(currentMenuOption);
+                
+            }
+        } else {
+            System.out.println("Did you really think that would work? Try a different menu!");
+            System.out.println("Omiyowa mou shinderu.");
+            dc.pause(3500);
+            throw new IndexOutOfBoundsException("NANI?");
+        }
+    }
+    
     public void drawMenu() {
         menu.drawMenu();
     }
