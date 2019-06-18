@@ -23,6 +23,6 @@ public abstract class Interface {
 
 enum InterfaceType {
     TEXT_BOX, TEXT_MENU, // NPC and cutscene text interfaces
-    BATTLE_TEXT_BOX, BATTLE_MENU, // Battle text interfaces
+    MAIN_BATTLE_MENU, BATTLE_TEXT_BOX, BATTLE_MENU, // Battle text interfaces
     BACKPACK_MENU, POKEMON_MENU, BOX_MENU// Other interfaces
 }

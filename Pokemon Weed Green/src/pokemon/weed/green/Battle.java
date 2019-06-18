@@ -35,8 +35,9 @@ public class Battle {
         Decode decoder = new Decode("TypeEffectivenessFile.txt");
         if (decoder.getOpen()) {
             double[][] typeEffectiveness = decoder.fromFileDouble();
+            System.out.println("Type effectiveness chart succesfully read.");
         } else {
-            System.out.println("No effectiveness chart found. All moves do 1.0x daamge.");
+            System.out.println("No effectiveness chart found. All moves do 1.0x damage.");
         }
     }
     
@@ -150,8 +151,12 @@ public class Battle {
     }
     
     // Menu methods
+    public void drawMenu() {
+        menu.drawMenu();
+    }
+    
     public void drawMainMenu() {
-        menu.type = InterfaceType.BATTLE_MENU;
+        menu.type = InterfaceType.MAIN_BATTLE_MENU;
     }
     
     public void drawAttackMenu() {

@@ -1,6 +1,7 @@
 package pokemon.weed.green;
 
 import DLibX.DConsole;
+import java.awt.Color;
 import pokemonList.*;
 
 public class PokemonWeedGreen {
@@ -13,6 +14,7 @@ public class PokemonWeedGreen {
 
         DConsole dc = new DConsole(consoleSize, consoleSize);
         dc.setOrigin(DConsole.ORIGIN_CENTER);
+        dc.setResizable(true);
         
         Decode decode = new Decode("World.txt");
 
@@ -33,15 +35,16 @@ public class PokemonWeedGreen {
         dc.setOrigin(DConsole.ORIGIN_TOP_LEFT);
         Pokemon[] pokemon1 = new Pokemon[6];
         Pokemon[] pokemon2 = new Pokemon[6];
-        pokemon1[0] = new Empoleon("Empoleon", 36); // NOTE: It says that these are not Pokemon and casting doesn't work. Figure it out.
+        pokemon1[0] = new Empoleon("Empoleon", 36);
         pokemon1[1] = new Luxray("Luxray", 40);
         pokemon2[0] = new Bidoof("Bidoof", 12);
         
         Battle battle = new Battle(dc, pokemon1, pokemon2);
-
+        battle.drawAttackMenu();
+        
         while (true) { // Testing Area
             battle.drawPokemon();
-            battle.drawMainMenu();
+            battle.drawMenu();
             dc.redraw();
             dc.pause(30);
             dc.clear();

@@ -10,7 +10,7 @@ public class Menu extends Interface {
         this.dc = dc;
         this.type = interfaceType; // Set variables
         if (this.type == InterfaceType.BATTLE_MENU) {
-            this.topLeft = new Point(this.consoleSize * 6 / 10 - 10, this.consoleSize * 15 / 20);
+            this.topLeft = new Point(0, this.consoleSize * 15 / 20);
             this.bottomRight = new Point(this.consoleSize, this.consoleSize);
         } else if (this.type == InterfaceType.TEXT_MENU) {
             this.topLeft = new Point(this.consoleSize * 15 / 20, this.consoleSize * 12 / 20);
@@ -31,17 +31,27 @@ public class Menu extends Interface {
         } else {
             dc.setPaint(textBoxWhite);
         }
+        // Draw the box
         dc.fillRect(topLeft.x, topLeft.y, bottomRight.x - topLeft.x + 1, bottomRight.y - topLeft.y + 1); // Draw the inside of the textbox
+        dc.fillRect(0, 0, borderSize, borderSize);
+        // Do borders
         dc.setPaint(temporaryBorderColour);
         if (this.type == InterfaceType.BATTLE_MENU) {
-            for (int i = 0; i < borderSize; i++) {
-                dc.drawRect(topLeft.x + i, topLeft.y - i, bottomRight.x - topLeft.x - i, bottomRight.y - topLeft.y + i);
-            }
-            this.topLeft = new Point(0, this.consoleSize * 15 / 20);
+            // Left borders
+            this.topLeft = new Point(0, this.consoleSize * 15 / 20); // Setting size for borders
             this.bottomRight = new Point(this.consoleSize * 6 / 10, this.consoleSize);
             for (int i = 0; i < borderSize; i++) {
                 dc.drawRect(topLeft.x + i, topLeft.y - i, bottomRight.x - topLeft.x - i, bottomRight.y - topLeft.y + i);
             }
+            // Rights borders
+            this.topLeft = new Point(this.consoleSize * 6 / 10 - 10, this.consoleSize * 15 / 20);
+            this.bottomRight = new Point(this.consoleSize, this.consoleSize);
+            for (int i = 0; i < borderSize; i++) {
+                dc.drawRect(topLeft.x + i, topLeft.y - i, bottomRight.x - topLeft.x - i, bottomRight.y - topLeft.y + i);
+            }
+            // Reset size
+            this.topLeft = new Point(0, this.consoleSize * 15 / 20);
+            this.bottomRight = new Point(this.consoleSize, this.consoleSize);
         } else if (this.type == InterfaceType.TEXT_MENU) {
             // Height ^ 4 = (1 / Length(maybe))x ^ 4 + y ^ 4? (Not used)
             
