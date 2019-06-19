@@ -216,6 +216,16 @@ public class PokemonWeedGreen {
                 direction = 'l';
             }
             
+            if (worldNPCs[playerI][playerJ+1] != null && direction == 'd' && dc.isKeyPressed(' ')) {
+                
+            } else if (worldNPCs[playerI][playerJ-1] != null && direction == 'u' && dc.isKeyPressed(' ')) {
+                
+            } else if (worldNPCs[playerI-1][playerJ] != null && direction == 'l' && dc.isKeyPressed(' ')) {
+                
+            } else if (worldNPCs[playerI+1][playerJ] != null && direction == 'r' && dc.isKeyPressed(' ')) {
+                
+            }
+            
             //------------------- Drawing -----------------------
             
             dc.clear();
@@ -224,11 +234,6 @@ public class PokemonWeedGreen {
                 for (int j = 0; j < worldTiles[i].length; j++) {
                     if (worldTiles[i][j] != null) {
                         worldTiles[i][j].draw(x, y);
-                        if (worldTiles[i][j].getCollide() == true) {
-                            dc.fillRect((i*size) - x, (j*size) - y, size, size);
-                        System.out.println("i : " + i);
-                        System.out.println("j : " + j);
-                    }
                     }
                 }
             }
