@@ -195,21 +195,21 @@ public class PokemonWeedGreen {
             }
             
             if (dc.isKeyPressed(38) && goalX == x && goalY == y && worldTiles[playerI][playerJ-1].getCollide() == false) { // up
-                System.out.println('u');
+                //System.out.println('u');
                 goalY -= size;
                 direction = 'u';
             } else if (dc.isKeyPressed(40) && goalX == x && goalY == y && worldTiles[playerI][playerJ+1].getCollide() == false) { // down
-                System.out.println('d');
+                //System.out.println('d');
                 goalY += size;
                 direction = 'd';
             }
 
             if (dc.isKeyPressed(39) && goalX == x && goalY == y && worldTiles[playerI+1][playerJ].getCollide() == false) { // right
-                System.out.println('r');
+                //System.out.println('r');
                 goalX += size;
                 direction = 'r';
             } else if (dc.isKeyPressed(37) && goalX == x && goalY == y && worldTiles[playerI-1][playerJ].getCollide() == false) { // left
-                System.out.println('l');
+                //System.out.println('l');
                 goalX -= size;
                 direction = 'l';
             }
