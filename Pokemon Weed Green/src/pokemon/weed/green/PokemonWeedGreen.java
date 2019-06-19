@@ -183,8 +183,6 @@ public class PokemonWeedGreen {
             
             playerI = (400+x)/size;
             playerJ = (448+y)/size;
-            System.out.println(playerI);
-            System.out.println(playerJ);
             
             if (goalX > x) {
                 x += size/3;
@@ -217,13 +215,13 @@ public class PokemonWeedGreen {
             }
             
             if (worldNPCs[playerI][playerJ+1] != null && direction == 'd' && dc.isKeyPressed(' ')) {
-                
+                System.out.println(worldNPCs[playerI][playerJ+1].getText());
             } else if (worldNPCs[playerI][playerJ-1] != null && direction == 'u' && dc.isKeyPressed(' ')) {
-                
+                System.out.println(worldNPCs[playerI][playerJ-1].getText());
             } else if (worldNPCs[playerI-1][playerJ] != null && direction == 'l' && dc.isKeyPressed(' ')) {
-                
+                System.out.println(worldNPCs[playerI-1][playerJ].getText());
             } else if (worldNPCs[playerI+1][playerJ] != null && direction == 'r' && dc.isKeyPressed(' ')) {
-                
+                System.out.println(worldNPCs[playerI+1][playerJ].getText());
             }
             
             //------------------- Drawing -----------------------
