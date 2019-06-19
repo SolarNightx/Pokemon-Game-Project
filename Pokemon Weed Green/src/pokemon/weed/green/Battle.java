@@ -56,10 +56,14 @@ public class Battle {
     // Battle methods
     public void startTurn() {
         // Check speeds, then attack appropriately
-        if (activePlayerMon.speed > activeFoeMon.speed && storedFoeAttack.priority <= storedPlayerAttack.priority) {
+        if (activePlayerMon.speed > activeFoeMon.speed 
+                && storedFoeAttack.priority <= storedPlayerAttack.priority 
+                || storedPlayerAttack.priority > storedFoeAttack.priority) {
             playerAttack(storedPlayerAttack);
             foeAttack(storedFoeAttack);
-        } else if (activeFoeMon.speed > activePlayerMon.speed && storedPlayerAttack.priority <= storedFoeAttack.priority) {
+        } else if (activeFoeMon.speed > activePlayerMon.speed 
+                && storedPlayerAttack.priority <= storedFoeAttack.priority
+                || storedFoeAttack.priority > storedPlayerAttack.priority) {
             foeAttack(storedFoeAttack);
             playerAttack(storedPlayerAttack);
         } else {
