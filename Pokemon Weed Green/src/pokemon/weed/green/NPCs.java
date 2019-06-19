@@ -35,7 +35,7 @@ public class NPCs {
     }
 
     public void draw(int offX, int offY) {
-        dc.drawImage(filename, x - offX, y - offY);
+        dc.drawImage(filename, (x - offX)-24, (y - offY)-24);
     }
     
     public void drawTextBox() {
