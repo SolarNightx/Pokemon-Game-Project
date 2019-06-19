@@ -6,7 +6,7 @@
 package pokemonList;
 
 import java.util.Random;
-import pokemon.weed.green.Moves;
+import moveList.Moves;
 import pokemon.weed.green.Status;
 import pokemon.weed.green.Type;
 
@@ -78,5 +78,13 @@ public abstract class Pokemon {
 
     public Moves getMove(int moveSlot) {
         return moves[moveSlot];
+    }
+    
+    public void setMove(int slot, Moves move) {
+        moves[slot] = move;
+    }
+    
+    public void heal(){
+        this.HP = this.maxHP;
     }
 }

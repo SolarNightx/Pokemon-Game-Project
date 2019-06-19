@@ -14,8 +14,8 @@ public class Torterra extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
-        this.sprites[0] = "389.png";
-        this.sprites[1] = "389b.png";
+        this.sprites[0] = "Battlers/389.png";
+        this.sprites[1] = "Battlers/389b.png";
         
         this.type[0] = new Type(Type.PType.GRASS);
         this.type[1] = new Type(Type.PType.GROUND);
@@ -48,7 +48,7 @@ public class Torterra extends Pokemon {
 
         gender(gender);
         updateStats(this.level, base);
-
+        heal();
     }
 
 }

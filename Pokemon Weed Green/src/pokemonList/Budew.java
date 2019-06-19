@@ -15,8 +15,8 @@ public class Budew extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
-        this.sprites[0] = "406.png";
-        this.sprites[1] = "406b.png";
+        this.sprites[0] = "Battlers/406.png";
+        this.sprites[1] = "Battlers/406b.png";
         
         this.type[0] = new Type(Type.PType.GRASS);
         this.type[1] = new Type(Type.PType.POISON);
@@ -49,7 +49,8 @@ public class Budew extends Pokemon {
 
         gender(gender);
         updateStats(this.level, base);
-
+        heal();
+        
     }
 
 }

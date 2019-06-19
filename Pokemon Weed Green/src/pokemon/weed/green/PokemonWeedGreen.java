@@ -3,6 +3,7 @@ package pokemon.weed.green;
 import DLibX.DConsole;
 import java.awt.Color;
 import pokemonList.*;
+import moveList.*;
 
 public class PokemonWeedGreen {
 
@@ -35,16 +36,30 @@ public class PokemonWeedGreen {
         dc.setOrigin(DConsole.ORIGIN_TOP_LEFT);
         Pokemon[] pokemon1 = new Pokemon[6];
         Pokemon[] pokemon2 = new Pokemon[6];
+        
         pokemon1[0] = new Empoleon("Empoleon", 36);
+        pokemon1[0].setMove(0, new Surf());
+        pokemon1[0].setMove(1, new flashCannon());
+        pokemon1[0].setMove(2, new Tackle());
+        pokemon1[0].setMove(3, new quickAattack());
+        
         pokemon1[1] = new Luxray("Luxray", 40);
-        pokemon2[0] = new Bidoof("Bidoof", 12);
+        pokemon1[1].setMove(0, new thunderFang());
+        pokemon1[1].setMove(1, new quickAattack());
+        
+        pokemon2[0] = new Bidoof("Bidoof", 100);
+        pokemon2[0].setMove(0, new Tackle());
+        pokemon2[0].setMove(1, new baiLol());
+        pokemon2[0].setMove(2, new quickAattack());
         
         Battle battle = new Battle(dc, pokemon1, pokemon2);
-        battle.drawAttackMenu();
+        battle.drawMainMenu();
         
         while (true) { // Testing Area
             battle.drawPokemon();
             battle.drawMenu();
+            battle.drawHealthBars();
+            battle.checkInputs();
             dc.redraw();
             dc.pause(30);
             dc.clear();

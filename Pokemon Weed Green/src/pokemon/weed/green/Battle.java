@@ -1,7 +1,10 @@
 package pokemon.weed.green;
 
+import moveList.Moves;
 import DLibX.DConsole;
+import java.awt.Point;
 import java.util.Random;
+import pokemon.weed.green.MoveType.MType;
 import pokemonList.Pokemon;
 
 public class Battle {
@@ -11,6 +14,7 @@ public class Battle {
     Pokemon activePlayerMon;
     Pokemon activeFoeMon;
     Menu menu;
+    TextBox[] healthBars = new TextBox[2];
     Random rng = new Random();
     Moves storedFoeAttack = null;
     Moves storedPlayerAttack = null;
@@ -25,7 +29,15 @@ public class Battle {
     
     public Battle(DConsole dc, Pokemon[] playerMons, Pokemon[] foeMons) {
         this.dc = dc;
+        
+        // Interfaces
         menu = new Menu(dc, InterfaceType.BATTLE_MENU);
+        healthBars[0] = new TextBox(dc, InterfaceType.HEALTH_BAR, new String[] {"HP"});
+        healthBars[1] = new TextBox(dc, InterfaceType.HEALTH_BAR, new String[] {"HP"});
+        healthBars[0].setNewCoordinates(new Point(1, 1), new Point(5, 2)); // Out of 20
+        healthBars[1].setNewCoordinates(new Point(16, 14), new Point(20, 15));
+        
+        // Rest of the stuff
         this.playerMons = playerMons;
         this.foeMons = foeMons;
         activePlayerMon = playerMons[0];
@@ -42,22 +54,32 @@ public class Battle {
     }
     
     // Battle methods
-    public void startTurn(Moves playerMove, Moves foeMove) {
-        if (activePlayerMon.speed > activeFoeMon.speed && foeMove.priority <= playerMove.priority) {
-            playerAttack(playerMove);
-            foeAttack(foeMove);
-        } else if (activeFoeMon.speed > activePlayerMon.speed && playerMove.priority <= foeMove.priority) {
-            foeAttack(foeMove);
-            playerAttack(playerMove);
+    public void startTurn() {
+        // Check speeds, then attack appropriately
+        if (activePlayerMon.speed > activeFoeMon.speed && storedFoeAttack.priority <= storedPlayerAttack.priority) {
+            playerAttack(storedPlayerAttack);
+            foeAttack(storedFoeAttack);
+        } else if (activeFoeMon.speed > activePlayerMon.speed && storedPlayerAttack.priority <= storedFoeAttack.priority) {
+            foeAttack(storedFoeAttack);
+            playerAttack(storedPlayerAttack);
         } else {
             if (rng.nextBoolean()) {
-                playerAttack(playerMove);
-                foeAttack(foeMove);
+                playerAttack(storedPlayerAttack);
+                foeAttack(storedFoeAttack);
             } else {
-                foeAttack(foeMove);
-                playerAttack(playerMove);
+                foeAttack(storedFoeAttack);
+                playerAttack(storedPlayerAttack);
             }
         }
+    }
+    
+    public void generateFoeMove() {
+        // Self-explanitory
+        int randomNumber;
+        do {
+            randomNumber = rng.nextInt(4);
+        } while (activeFoeMon.getMove(randomNumber) != null);
+        storedFoeAttack = activeFoeMon.getMove(randomNumber);
     }
     
     /* Damage formula:
@@ -66,71 +88,71 @@ public class Battle {
         Random: (rng.nextInt(15) + 85) / 100.00;
     */
     
-    public void playerAttack(Moves playerMove) {
-        if (rng.nextInt(100) < (playerMove.accuracy)) { // Accuracy Check (Prob will change.)
-            if (playerMove.moveType == MoveType.PHYSICAL) {
+    public void playerAttack(Moves storedPlayerAttack) {
+        if (rng.nextInt(100) < (storedPlayerAttack.accuracy)) { // Accuracy Check (Prob will change.)
+            if (storedPlayerAttack.moveType.moveType == MType.PHYSICAL) {
                 // Random
                 random = (rng.nextInt(15) + 85) / 100;
                 // modifier
-                if (activePlayerMon.type[0].type == playerMove.type.type || activePlayerMon.type[1].type == playerMove.type.type) {
+                if (activePlayerMon.type[0].type == storedPlayerAttack.type.type || activePlayerMon.type[1].type == storedPlayerAttack.type.type) {
                     stab = 1.50;
                 } else {
                     stab = 1.00;
                 }
                 modifier = stab * random; // More should be added
                 // Set damage
-                damage = (int)((((2 + (2 * activePlayerMon.level / 5)) * playerMove.power * (activePlayerMon.atk / activeFoeMon.def)) / 50 + 2) * modifier);
-            } else if (playerMove.moveType == MoveType.SPECIAL) {
+                damage = (int)((((2 + (2 * activePlayerMon.level / 5)) * storedPlayerAttack.power * (activePlayerMon.atk / activeFoeMon.def)) / 50 + 2) * modifier);
+            } else if (storedPlayerAttack.moveType.moveType == MType.SPECIAL) {
                 // Random
                 random = (rng.nextInt(15) + 85) / 100;
                 // modifier
-                if (activePlayerMon.type[0].type == playerMove.type.type || activePlayerMon.type[1].type == playerMove.type.type) {
+                if (activePlayerMon.type[0].type == storedPlayerAttack.type.type || activePlayerMon.type[1].type == storedPlayerAttack.type.type) {
                     stab = 1.50;
                 } else {
                     stab = 1.00;
                 }
                 modifier = stab * random; // More should be added
                 // Set damage
-                damage = (int)((((2 + (2 * activePlayerMon.level / 5)) * playerMove.power * (activePlayerMon.specialAtk / activeFoeMon.specialDef)) / 50 + 2) * modifier);
+                damage = (int)((((2 + (2 * activePlayerMon.level / 5)) * storedPlayerAttack.power * (activePlayerMon.specialAtk / activeFoeMon.specialDef)) / 50 + 2) * modifier);
             }
             // Use the effect of the move
-            playerMove.useEffect(activeFoeMon, rng);
+            storedPlayerAttack.useEffect(activeFoeMon, rng);
         }
     }
     
-    public void foeAttack(Moves foeMove) {
-        if (rng.nextInt(100) < (foeMove.accuracy)) { // Accuracy Check (Prob will change.)
-            if (foeMove.moveType == MoveType.PHYSICAL) {
+    public void foeAttack(Moves storedFoeAttack) {
+        if (rng.nextInt(100) < (storedFoeAttack.accuracy)) { // Accuracy Check (Prob will change.)
+            if (storedFoeAttack.moveType.moveType == MType.PHYSICAL) {
                 // Random
                 random = (rng.nextInt(15) + 85) / 100;
                 // modifier
-                if (activeFoeMon.type[0].type == foeMove.type.type || activeFoeMon.type[1].type == foeMove.type.type) {
+                if (activeFoeMon.type[0].type == storedFoeAttack.type.type || activeFoeMon.type[1].type == storedFoeAttack.type.type) {
                     stab = 1.50;
                 } else {
                     stab = 1.00;
                 }
                 modifier = stab * random; // More should be added
                 // Set damage
-                damage = (int)((((2 + (2 * activeFoeMon.level / 5)) * foeMove.power * (activeFoeMon.atk / activePlayerMon.def)) / 50 + 2) * modifier);
+                damage = (int)((((2 + (2 * activeFoeMon.level / 5)) * storedFoeAttack.power * (activeFoeMon.atk / activePlayerMon.def)) / 50 + 2) * modifier);
                 // You still take the damage!!!!! We should animate this later with a different display HP variable.
                 activePlayerMon.HP -= damage;
-            } else if (foeMove.moveType == MoveType.SPECIAL) {
+            } else if (storedFoeAttack.moveType.moveType == MType.SPECIAL) {
                 // Random
                 random = (rng.nextInt(15) + 85) / 100;
                 // modifier
-                if (activeFoeMon.type[0].type == foeMove.type.type || activeFoeMon.type[1].type == foeMove.type.type) {
+                if (activeFoeMon.type[0].type == storedFoeAttack.type.type || activeFoeMon.type[1].type == storedFoeAttack.type.type) {
                     stab = 1.50;
                 } else {
                     stab = 1.00;
                 }
                 modifier = stab * random; // More should be added
                 // Set damage
-                damage = (int)((((2 + (2 * activeFoeMon.level / 5)) * foeMove.power * (activeFoeMon.specialAtk / activePlayerMon.specialDef)) / 50 + 2) * modifier);
+                damage = (int)((((2 + (2 * activeFoeMon.level / 5)) * storedFoeAttack.power * (activeFoeMon.specialAtk / activePlayerMon.specialDef)) / 50 + 2) * modifier);
                 // You still take the damage!!!!! We should animate this later.
                 activePlayerMon.HP -= damage;
             }
             // Use the effect of the move
-            foeMove.useEffect(activeFoeMon, rng);
+            storedFoeAttack.useEffect(activeFoeMon, rng);
         }
     }
     
@@ -140,13 +162,14 @@ public class Battle {
     }
     
     // Pokemon methods
+    
     public void drawPokemon() {
         // Should animate deaths.
         if (activePlayerMon.HP > 0) {
-            dc.drawImage(activePlayerMon.sprites[0], dc.getWidth() * 3 / 10, dc.getHeight() * 7 / 10);
+            dc.drawImage(activePlayerMon.sprites[1], dc.getWidth() * 3 / 20, dc.getHeight() * 9 / 20);
         }
         if (activeFoeMon.HP > 0) {
-            dc.drawImage(activeFoeMon.sprites[1], dc.getWidth() * 7 / 10, dc.getHeight() * 3 / 10);
+            dc.drawImage(activeFoeMon.sprites[0], dc.getWidth() * 13 / 20, dc.getHeight() * 3 / 20);
         }
     }
     
@@ -166,6 +189,15 @@ public class Battle {
             } else if (this.currentMenuOption % 2 == 0 && dc.getKeyPress(39)) { // Right
                 this.currentMenuOption++;
             }
+            // Selection key presses
+            if (dc.getKeyPress(90)) { // Select option (z)
+                switch (currentMenuOption) {
+                    case 0: this.drawAttackMenu(); break;
+                    case 1: this.loadPokemonMenu(); break;
+                    case 2: this.loadBackpackMenu(); break;
+                    case 3: this.flee(); break;
+                }
+            }
         } else if (this.menu.type == InterfaceType.BATTLE_MENU) {
             // Four square based system. Cannot navigate past borders or null squares.
             // 0 1     Pressing down adds 2, pressing right adds 1,
@@ -183,9 +215,9 @@ public class Battle {
             if (dc.getKeyPress(88)) { // Back to main menu
                 this.drawMainMenu();
             } else if (dc.getKeyPress(90)) { // Select move (z)
-                this.generateFoeAttack();
+                this.generateFoeMove();
                 this.storedPlayerAttack = activePlayerMon.getMove(currentMenuOption);
-                
+                this.startTurn();
             }
         } else {
             System.out.println("Did you really think that would work? Try a different menu!");
@@ -196,7 +228,13 @@ public class Battle {
     }
     
     public void drawMenu() {
-        menu.drawMenu();
+        menu.drawMenu(activePlayerMon);
+    }
+    
+    public void drawHealthBars() {
+        healthBars[0].drawHealthBar(activeFoeMon);
+        healthBars[1].drawHealthBar(activePlayerMon);
+        
     }
     
     public void drawMainMenu() {
@@ -215,24 +253,7 @@ public class Battle {
         menu.type = InterfaceType.BACKPACK_MENU;
     }
     
-    // Key presses
-    public boolean getSpacePress() {
-        return menu.dc.getKeyPress(32);
-    }
-    
-    public boolean getLeftPress() {
-        return menu.dc.getKeyPress(37);
-    }
-    
-    public boolean getRightPress() {
-        return menu.dc.getKeyPress(39);
-    }
-    
-    public boolean getUpPress() {
-        return menu.dc.getKeyPress(38);
-    }
-    
-    public boolean getDownPress() {
-        return menu.dc.getKeyPress(40);
+    public void flee() {
+        // Do of the fleeing and run away.
     }
 }

@@ -14,8 +14,8 @@ public class Prinplup extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
-        this.sprites[0] = "394.png";
-        this.sprites[1] = "394b.png";
+        this.sprites[0] = "Battlers/394.png";
+        this.sprites[1] = "Battlers/394b.png";
         
         this.type[0] = new Type(Type.PType.WATER);
         this.type[1] = new Type(Type.PType.NULL);
@@ -48,6 +48,7 @@ public class Prinplup extends Pokemon {
 
         gender(gender);
         updateStats(this.level, base);
+        heal();
 
     }
 

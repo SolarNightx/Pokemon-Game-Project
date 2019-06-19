@@ -14,8 +14,8 @@ public class Roserade extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
-        this.sprites[0] = "407.png";
-        this.sprites[1] = "407b.png";
+        this.sprites[0] = "Battlers/407.png";
+        this.sprites[1] = "Battlers/407b.png";
         
         this.type[0] = new Type(Type.PType.GRASS);
         this.type[1] = new Type(Type.PType.POISON);
@@ -48,6 +48,7 @@ public class Roserade extends Pokemon {
 
         gender(gender);
         updateStats(this.level, base);
+        heal();
 
     }
 

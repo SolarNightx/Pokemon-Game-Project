@@ -14,8 +14,8 @@ public class Turtwig extends Pokemon{
         this.gender = r.nextInt(2);
         this.level = level;
 
-        this.sprites[0] = "387.png";
-        this.sprites[1] = "387b.png";
+        this.sprites[0] = "Battlers/387.png";
+        this.sprites[1] = "Battlers/387b.png";
         
         this.type[0] = new Type(Type.PType.GRASS);
         this.type[1] = new Type(Type.PType.NULL);
@@ -48,6 +48,7 @@ public class Turtwig extends Pokemon{
 
         gender(gender);
         updateStats(this.level, base);
+        heal();
 
     }
 

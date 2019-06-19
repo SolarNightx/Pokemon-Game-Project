@@ -14,8 +14,8 @@ public class Kricketot extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
-        this.sprites[0] = "401.png";
-        this.sprites[1] = "401b.png";
+        this.sprites[0] = "Battlers/401.png";
+        this.sprites[1] = "Battlers/401b.png";
         
         this.type[0] = new Type(Type.PType.BUG);
         this.type[1] = new Type(Type.PType.NULL);
@@ -48,7 +48,8 @@ public class Kricketot extends Pokemon {
 
         gender(gender);
         updateStats(this.level, base);
-
+        heal();
+        
     }
 
 }

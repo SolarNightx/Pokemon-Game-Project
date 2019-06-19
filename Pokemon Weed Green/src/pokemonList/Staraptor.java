@@ -14,8 +14,8 @@ public class Staraptor extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
         
-        this.sprites[0] = "398.png";
-        this.sprites[1] = "398b.png";
+        this.sprites[0] = "Battlers/398.png";
+        this.sprites[1] = "Battlers/398b.png";
 
         this.type[0] = new Type(Type.PType.NORMAL);
         this.type[1] = new Type(Type.PType.FLYING);
@@ -48,7 +48,7 @@ public class Staraptor extends Pokemon {
 
         gender(gender);
         updateStats(this.level, base);
-
+        heal();
     }
 
 }

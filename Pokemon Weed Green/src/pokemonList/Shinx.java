@@ -14,8 +14,8 @@ public class Shinx extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
-        this.sprites[0] = "403.png";
-        this.sprites[1] = "403.b.png";
+        this.sprites[0] = "Battlers/403.png";
+        this.sprites[1] = "Battlers/403.b.png";
         
         this.type[0] = new Type(Type.PType.ELECTRIC);
         this.type[1] = new Type(Type.PType.NULL);
@@ -48,6 +48,7 @@ public class Shinx extends Pokemon {
 
         gender(gender);
         updateStats(this.level, base);
+        heal();
 
     }
 

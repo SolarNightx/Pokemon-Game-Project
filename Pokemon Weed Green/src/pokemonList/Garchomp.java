@@ -15,8 +15,8 @@ public class Garchomp extends Pokemon {
         this.name = "Garchomp";
         this.gender = r.nextInt(2);
         this.level = level;
-        this.sprites[0] = "445.png";
-        this.sprites[1] = "445b.png";
+        this.sprites[0] = "Battlers/445.png";
+        this.sprites[1] = "Battlers/445b.png";
         this.type[0] = new Type(Type.PType.DRAGON);
         this.type[1] = new Type(Type.PType.GROUND);
 
@@ -48,7 +48,7 @@ public class Garchomp extends Pokemon {
 
         gender(gender);
         updateStats(this.level, base);
-
+        heal();
     }
 
 }

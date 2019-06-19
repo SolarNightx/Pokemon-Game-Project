@@ -19,24 +19,24 @@ public class Bidoof extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
-        this.sprites[0] = "TheTrueGod.png";
-        this.sprites[1] = "TheTrueGodb.png";
+        this.sprites[0] = "Battlers/TheTrueGod.png";
+        this.sprites[1] = "Battlers/TheTrueGodb.png";
         
         this.type[0] = new Type(Type.PType.NORMAL);
         this.type[1] = new Type(Type.PType.NULL);
 
         //hp
-        this.base[0] = 59;
+        this.base[0] = 999;
         //atk
-        this.base[1] = 45;
+        this.base[1] = 999;
         //def
-        this.base[2] = 40;
+        this.base[2] = 999;
         //sp.ack
-        this.base[3] = 35;
+        this.base[3] = 999;
         //sp. def
-        this.base[4] = 40;
+        this.base[4] = 999;
         //speed
-        this.base[5] = 31;
+        this.base[5] = 999;
 
         //hp
         this.EVYield[0] = 1;
@@ -53,6 +53,7 @@ public class Bidoof extends Pokemon {
 
         gender(gender);
         updateStats(this.level, base);
+        heal();
 
     }
 

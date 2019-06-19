@@ -15,8 +15,8 @@ public class Bibarel extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
-        this.sprites[0] = "400.png";
-        this.sprites[1] = "400b.png";
+        this.sprites[0] = "Battlers/400.png";
+        this.sprites[1] = "Battlers/400b.png";
         
         this.type[0] = new Type(Type.PType.NORMAL);
         this.type[1] = new Type(Type.PType.WATER);
@@ -49,7 +49,8 @@ public class Bibarel extends Pokemon {
 
         gender(gender);
         updateStats(this.level, base);
-
+        heal();
+        
     }
 
 }

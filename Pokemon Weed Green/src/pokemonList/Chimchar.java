@@ -19,8 +19,8 @@ public class Chimchar extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
-        this.sprites[0] = "390.png";
-        this.sprites[1] = "390b.png";
+        this.sprites[0] = "Battlers/390.png";
+        this.sprites[1] = "Battlers/390b.png";
         
         this.type[0] = new Type(Type.PType.FIRE);
         this.type[1] = new Type(Type.PType.NULL);
@@ -53,7 +53,8 @@ public class Chimchar extends Pokemon {
 
         gender(gender);
         updateStats(this.level, base);
-
+        heal();
+        
     }
 
 }

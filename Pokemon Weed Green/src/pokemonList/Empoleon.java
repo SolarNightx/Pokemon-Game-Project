@@ -15,12 +15,13 @@ public class Empoleon extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
-        this.sprites[0] = "395.png";
-        this.sprites[1] = "395b.png";
+        this.sprites[0] = "Battlers/395.png";
+        this.sprites[1] = "Battlers/395b.png";
         
         this.type[0] = new Type(Type.PType.WATER);
         this.type[1] = new Type(Type.PType.STEEL);
 
+       
         //hp
         this.base[0] = 84;
         //atk
@@ -49,7 +50,7 @@ public class Empoleon extends Pokemon {
 
         gender(gender);
         updateStats(this.level, base);
-
+        heal();
     }
 
 }

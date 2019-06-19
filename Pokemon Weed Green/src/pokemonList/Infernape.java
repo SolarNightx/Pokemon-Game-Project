@@ -14,8 +14,8 @@ public class Infernape extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
-        this.sprites[0] = "392.png";
-        this.sprites[1] = "392b.png";
+        this.sprites[0] = "Battlers/392.png";
+        this.sprites[1] = "Battlers/392b.png";
         
         this.type[0] = new Type(Type.PType.FIRE);
         this.type[1] = new Type(Type.PType.FIGHTING);
@@ -48,7 +48,8 @@ public class Infernape extends Pokemon {
 
         gender(gender);
         updateStats(this.level, base);
-
+        heal();
+        
     }
 
 }

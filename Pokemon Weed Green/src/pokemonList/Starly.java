@@ -14,8 +14,8 @@ public class Starly extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
-        this.sprites[0] = "396.png";
-        this.sprites[1] = "396b.png";
+        this.sprites[0] = "Battlers/396.png";
+        this.sprites[1] = "Battlers/396b.png";
         
         this.type[0] = new Type(Type.PType.NORMAL);
         this.type[1] = new Type(Type.PType.FLYING);
@@ -48,7 +48,7 @@ public class Starly extends Pokemon {
 
         gender(gender);
         updateStats(this.level, base);
-
+        heal();
     }
 
 }
