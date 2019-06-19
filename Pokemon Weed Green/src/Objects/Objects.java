@@ -24,8 +24,8 @@ public abstract class Objects {
     DConsole dc;
     
     public Objects(int x, int y, boolean collide, DConsole dc) {
-        this.x = x;
-        this.y = y;
+        this.x = x+24;
+        this.y = y+24;
         this.collide = collide;
         this.dc = dc;
     }
