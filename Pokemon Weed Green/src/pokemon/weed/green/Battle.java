@@ -215,7 +215,11 @@ public class Battle {
             if (dc.getKeyPress(88)) { // Back to main menu
                 this.drawMainMenu();
             } else if (dc.getKeyPress(90)) { // Select move (z)
+<<<<<<< HEAD
                 this.generateFoeMove();
+=======
+                //this.generateFoeAttack();
+>>>>>>> 52735dc40f193adb7b52568b63704f3c3cbff456
                 this.storedPlayerAttack = activePlayerMon.getMove(currentMenuOption);
                 this.startTurn();
             }
