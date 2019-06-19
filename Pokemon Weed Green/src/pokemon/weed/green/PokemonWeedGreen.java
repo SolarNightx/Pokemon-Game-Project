@@ -214,16 +214,6 @@ public class PokemonWeedGreen {
                 direction = 'l';
             }
             
-            if (worldNPCs[playerI][playerJ+1] != null && direction == 'd' && dc.isKeyPressed(' ')) {
-                System.out.println(worldNPCs[playerI][playerJ+1].getText());
-            } else if (worldNPCs[playerI][playerJ-1] != null && direction == 'u' && dc.isKeyPressed(' ')) {
-                System.out.println(worldNPCs[playerI][playerJ-1].getText());
-            } else if (worldNPCs[playerI-1][playerJ] != null && direction == 'l' && dc.isKeyPressed(' ')) {
-                System.out.println(worldNPCs[playerI-1][playerJ].getText());
-            } else if (worldNPCs[playerI+1][playerJ] != null && direction == 'r' && dc.isKeyPressed(' ')) {
-                System.out.println(worldNPCs[playerI+1][playerJ].getText());
-            }
-            
             //------------------- Drawing -----------------------
             
             dc.clear();
@@ -262,6 +252,23 @@ public class PokemonWeedGreen {
                 case 'r':
                     dc.drawImage("NPCs/player-r.png", 400, 400+12);
                     break;
+            }
+            
+            if (worldNPCs[playerI][playerJ+1] != null && direction == 'd' && dc.isKeyPressed(' ')) {
+                //System.out.println(worldNPCs[playerI][playerJ+1].getText());
+                worldNPCs[playerI][playerJ + 1].drawTextBox();
+                if (worldNPCs[playerI][playerJ + 1].getBattle()) {
+                    
+                }
+            } else if (worldNPCs[playerI][playerJ-1] != null && direction == 'u' && dc.isKeyPressed(' ')) {
+                //System.out.println(worldNPCs[playerI][playerJ-1].getText());
+                worldNPCs[playerI][playerJ - 1].drawTextBox();
+            } else if (worldNPCs[playerI-1][playerJ] != null && direction == 'l' && dc.isKeyPressed(' ')) {
+                //System.out.println(worldNPCs[playerI-1][playerJ].getText());
+                worldNPCs[playerI-1][playerJ].drawTextBox();
+            } else if (worldNPCs[playerI+1][playerJ] != null && direction == 'r' && dc.isKeyPressed(' ')) {
+                //System.out.println(worldNPCs[playerI+1][playerJ].getText());
+                worldNPCs[playerI+1][playerJ].drawTextBox();
             }
             
             dc.redraw();

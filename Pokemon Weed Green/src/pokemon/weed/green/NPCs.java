@@ -6,6 +6,7 @@
 package pokemon.weed.green;
 
 import DLibX.DConsole;
+import pokemonList.Pokemon;
 
 /**
  *
@@ -16,6 +17,7 @@ public class NPCs {
     int x;
     int y;
     boolean battle;
+    Pokemon[] npcPokemon = new Pokemon[6];
     
     String text;
     String filename;
@@ -48,6 +50,10 @@ public class NPCs {
     
     public boolean getBattle() {
         return battle;
+    }
+    
+    public Pokemon[] getPokemon() {
+        return npcPokemon;
     }
 
 }
