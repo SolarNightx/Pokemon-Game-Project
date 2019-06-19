@@ -175,12 +175,11 @@ public class PokemonWeedGreen {
         battle.drawMainMenu();
         
         while (true) { // Testing Area
-<<<<<<< HEAD
-            battle.drawPokemon();
-            battle.drawMenu();
-            battle.drawHealthBars();
-            battle.checkInputs();
-=======
+            
+            //battle.drawPokemon();
+            //battle.drawMenu();
+            //battle.drawHealthBars();
+            //battle.checkInputs();
             
             playerI = (400+x)/size;
             playerJ = (448+y)/size;
@@ -262,10 +261,6 @@ public class PokemonWeedGreen {
                     break;
             }
             
-            //battle.drawPokemon();
-            //battle.drawMenu();
-            
->>>>>>> 52735dc40f193adb7b52568b63704f3c3cbff456
             dc.redraw();
             dc.pause(30);
             

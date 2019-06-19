@@ -14,7 +14,7 @@ import DLibX.DConsole;
 public class door extends Tiles {
 
     public door(int x, int y, DConsole dc, int sendX, int sendY) {
-        super(x, y, false, dc, true, sendX, sendY);
+        super(x, y, false, dc);
     }
     
     @Override
