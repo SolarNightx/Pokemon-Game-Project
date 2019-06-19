@@ -21,6 +21,8 @@ public class NPCs {
     String filename;
 
     DConsole dc;
+    
+    public TextBox textbox;
 
     public NPCs(int x, int y, String text, DConsole dc, boolean battle) {
         this.x = x+24;
@@ -29,10 +31,15 @@ public class NPCs {
         this.text = text;
         this.battle = battle;
         filename = "NPCs/oldman-d.png";
+        textbox = new TextBox(dc, InterfaceType.TEXT_BOX, new String[] {text});
     }
 
     public void draw(int offX, int offY) {
         dc.drawImage(filename, x - offX, y - offY);
+    }
+    
+    public void drawTextBox() {
+        textbox.drawTextBox();
     }
     
     public String getText() {

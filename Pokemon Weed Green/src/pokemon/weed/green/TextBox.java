@@ -31,7 +31,7 @@ public class TextBox extends Interface {
         }
     }
     
-    public void drawTextBox(String[] text) {
+    public void drawTextBox() {
         dc.setOrigin(DConsole.ORIGIN_TOP_LEFT); // Set origin
         // Check for night mode and set colour appropriately
         if (nightMode) { 
@@ -48,10 +48,18 @@ public class TextBox extends Interface {
                 dc.drawRect(topLeft.x + i, topLeft.y - i, bottomRight.x - topLeft.x - i, bottomRight.y - topLeft.y + i);
             }
         } else if (this.type == InterfaceType.TEXT_BOX) {
-            // Untested
+            // Borders (Broken)
             dc.drawRect(topLeft.x, topLeft.y, bottomRight.x - topLeft.x, bottomRight.y - topLeft.y);
             dc.fillRect(topLeft.x, (bottomRight.y - topLeft.y) * 19 / 20 + topLeft.y, bottomRight.x - topLeft.x, (bottomRight.y - topLeft.y) * 19 / 20); 
             dc.fillRect((bottomRight.x - topLeft.x) * 19 / 20 + topLeft.x, topLeft.y, (bottomRight.x - topLeft.x) * 19 / 20, bottomRight.y - topLeft.y);
+            
+            // Drawing Text
+            // Textbox extends from/to 1 / 10 to 9 / 10, and down from/to 15 / 20 to 19 / 20
+            dc.setFont(textFont);
+            dc.setPaint(blackLikeOurSouls);
+            for (int i = 0; i < text.length; i++) {
+                dc.drawString(text[i], consoleSize * 5 / 10, consoleSize * (16 + i * 2) / 20);
+            }
         }
     }
     

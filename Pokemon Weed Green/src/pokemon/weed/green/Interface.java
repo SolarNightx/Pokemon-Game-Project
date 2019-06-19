@@ -26,6 +26,7 @@ public abstract class Interface {
     // Fonts
     public static Font menuFont = new Font("Comic Sans", Font.PLAIN, 20);
     public static Font healthBarFont = new Font("Comic Sans", Font.BOLD, 12);
+    public static Font textFont = new Font("Comic Sans", Font.ITALIC, 22);
 }
 
 enum InterfaceType {
