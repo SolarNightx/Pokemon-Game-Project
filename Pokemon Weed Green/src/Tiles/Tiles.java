@@ -25,22 +25,11 @@ public abstract class Tiles {
 
     DConsole dc;
     
-    public Tiles(int x, int y, boolean collide, DConsole dc) { 
-        this(x, y, collide, dc, false, 0, 0);
-    }
-    
-    public Tiles(int x, int y, boolean collide, DConsole dc, boolean door, int sendX, int sendY) {
-        this.x = x;
-        this.y = y;
+    public Tiles(int x, int y, boolean collide, DConsole dc) {
+        this.x = x+24;
+        this.y = y+24;
         this.collide = collide;
         this.dc = dc;
-        this.door = door;
-        this.sendX = sendX;
-        this.sendY = sendY;
-    }
-    
-    public boolean getDoor() {
-        return this.door;
     }
     
     public boolean getCollide() {

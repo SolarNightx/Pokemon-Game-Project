@@ -23,8 +23,8 @@ public class NPCs {
     DConsole dc;
 
     public NPCs(int x, int y, String text, DConsole dc, boolean battle) {
-        this.x = x;
-        this.y = y;
+        this.x = x+24;
+        this.y = y+24;
         this.dc = dc;
         this.text = text;
         this.battle = battle;

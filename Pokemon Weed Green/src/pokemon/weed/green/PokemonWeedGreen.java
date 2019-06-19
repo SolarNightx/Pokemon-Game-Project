@@ -3,7 +3,6 @@ package pokemon.weed.green;
 import Objects.*;
 import Tiles.*;
 import DLibX.DConsole;
-import java.util.Scanner;
 import pokemonList.*;
 
 public class PokemonWeedGreen {
@@ -25,6 +24,8 @@ public class PokemonWeedGreen {
         int y = 240;
         int goalX = 240;
         int goalY = 240;
+        int playerI = (400+x)/size;
+        int playerJ = (400+y)/size;
         
         char direction = 'd';
 
@@ -162,33 +163,36 @@ public class PokemonWeedGreen {
         
         while (true) { // Testing Area
             
+            playerI = (400+x)/size;
+            playerJ = (448+y)/size;
+            System.out.println(playerI);
+            System.out.println(playerJ);
+            
             if (goalX > x) {
                 x += size/3;
             } else if (goalX < x) {
                 x -= size/3;
-                System.out.println(goalX);
-                System.out.println(x);
             } else if (goalY > y) {
                 y += size/3;
             } else if (goalY < y) {
                 y -= size/3;
             }
             
-            if (dc.isKeyPressed(38) && goalX == x && goalY == y && worldTiles[x/size][(y/size)-1].getCollide() == false) { // up
+            if (dc.isKeyPressed(38) && goalX == x && goalY == y && worldTiles[playerI][playerJ-1].getCollide() == false) { // up
                 System.out.println('u');
                 goalY -= size;
                 direction = 'u';
-            } else if (dc.isKeyPressed(40) && goalX == x && goalY == y && worldTiles[x/size][(y/size)+1].getCollide() == false) { // down
+            } else if (dc.isKeyPressed(40) && goalX == x && goalY == y && worldTiles[playerI][playerJ+1].getCollide() == false) { // down
                 System.out.println('d');
                 goalY += size;
                 direction = 'd';
             }
 
-            if (dc.isKeyPressed(39) && goalX == x && goalY == y && worldTiles[(x/size)+1][y/size].getCollide() == false) { // right
+            if (dc.isKeyPressed(39) && goalX == x && goalY == y && worldTiles[playerI+1][playerJ].getCollide() == false) { // right
                 System.out.println('r');
                 goalX += size;
                 direction = 'r';
-            } else if (dc.isKeyPressed(37) && goalX == x && goalY == y && worldTiles[(x/size)-1][y/size].getCollide() == false) { // left
+            } else if (dc.isKeyPressed(37) && goalX == x && goalY == y && worldTiles[playerI-1][playerJ].getCollide() == false) { // left
                 System.out.println('l');
                 goalX -= size;
                 direction = 'l';
@@ -202,6 +206,11 @@ public class PokemonWeedGreen {
                 for (int j = 0; j < worldTiles[i].length; j++) {
                     if (worldTiles[i][j] != null) {
                         worldTiles[i][j].draw(x, y);
+                        if (worldTiles[i][j].getCollide() == true) {
+                            dc.fillRect((i*size) - x, (j*size) - y, size, size);
+                        System.out.println("i : " + i);
+                        System.out.println("j : " + j);
+                    }
                     }
                 }
             }
@@ -221,16 +230,16 @@ public class PokemonWeedGreen {
             }
             switch (direction) {
                 case 'd':
-                    dc.drawImage("NPCs/player-d.png", 450, 300);
+                    dc.drawImage("NPCs/player-d.png", 400, 400+12);
                     break;
                 case 'u':
-                    dc.drawImage("NPCs/player-u.png", 450, 300);
+                    dc.drawImage("NPCs/player-u.png", 400, 400+12);
                     break;
                 case 'l':
-                    dc.drawImage("NPCs/player-l.png", 450, 300);
+                    dc.drawImage("NPCs/player-l.png", 400, 400+12);
                     break;
                 case 'r':
-                    dc.drawImage("NPCs/player-r.png", 450, 300);
+                    dc.drawImage("NPCs/player-r.png", 400, 400+12);
                     break;
             }
             
