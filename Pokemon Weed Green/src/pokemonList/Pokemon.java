@@ -66,6 +66,7 @@ public abstract class Pokemon {
         this.specialAtk = (Math.abs((2 * this.base[3] + IVs[3] + (EVs[3] / 4)) * this.level) / 100 + 5);
         this.specialDef = (Math.abs((2 * this.base[4] + IVs[4] + (EVs[4] / 4)) * this.level) / 100 + 5);
         this.speed = (Math.abs((2 * this.base[5] + IVs[5] + (EVs[5] / 4)) * this.level) / 100 + 5);
+        System.out.println(this.name + ": Speed - " + this.speed);
     }
     
     public void getEVYield(int[] EVYield){
@@ -77,6 +78,9 @@ public abstract class Pokemon {
     }
 
     public Moves getMove(int moveSlot) {
+        if (moveSlot < 0 || moveSlot > 3) {
+            return null;
+        }
         return moves[moveSlot];
     }
     

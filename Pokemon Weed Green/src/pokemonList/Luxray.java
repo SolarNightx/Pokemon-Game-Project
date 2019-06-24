@@ -14,8 +14,8 @@ public class Luxray extends Pokemon {
         this.gender = r.nextInt(2);
         this.level = level;
 
-        this.sprites[0] = "405.png";
-        this.sprites[1] = "405b.png";
+        this.sprites[0] = "Battlers/405.png";
+        this.sprites[1] = "Battlers/405b.png";
         
         this.type[0] = new Type(Type.PType.ELECTRIC);
         this.type[1] = new Type(Type.PType.NULL);
@@ -48,7 +48,7 @@ public class Luxray extends Pokemon {
 
         gender(gender);
         updateStats(this.level, base);
-
+        heal();
     }
 
 }

@@ -76,7 +76,7 @@ public class Menu extends Interface {
                 // Four moves... Unused move slots should be a null, and there should be a blank case for that.
                 // The left side extends from/to 0 / 10 to 6 / 10, and down from/to 15 / 20 to 10 / 10
                 dc.setOrigin(DConsole.ORIGIN_CENTER);
-                dc.setPaint(Color.BLACK);
+                dc.setPaint(blackText);
                 dc.setFont(this.menuFont);
                 // Draw the strings...
                 for (int i = 0; i < 4; i++) {

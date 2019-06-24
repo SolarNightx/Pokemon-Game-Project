@@ -19,6 +19,8 @@ public class PokemonWeedGreen {
         dc.setOrigin(DConsole.ORIGIN_CENTER);
         dc.setResizable(true);
         
+        boolean drawingTextBox = false;
+        
         int playerX = 0;
         int playerY = 0;
         int x = 240;
@@ -162,24 +164,39 @@ public class PokemonWeedGreen {
         pokemon1[0].setMove(2, new Tackle());
         pokemon1[0].setMove(3, new quickAattack());
         
-        pokemon1[1] = new Luxray("Luxray", 40);
-        pokemon1[1].setMove(0, new thunderFang());
-        pokemon1[1].setMove(1, new quickAattack());
+        pokemon2[0] = new Luxray("Luxray", 40);
+        pokemon2[0].setMove(0, new thunderFang());
+        pokemon2[0].setMove(1, new quickAattack());
         
-        pokemon2[0] = new Bidoof("Bidoof", 100);
+        /*pokemon2[0] = new Bidoof("Bidoof", 100);
         pokemon2[0].setMove(0, new Tackle());
         pokemon2[0].setMove(1, new baiLol());
-        pokemon2[0].setMove(2, new quickAattack());
+        pokemon2[0].setMove(2, new quickAattack());*/
         
         Battle battle = new Battle(dc, pokemon1, pokemon2);
         battle.drawMainMenu();
+        boolean thing = true;
+        
+        while (thing) {
+            battle.drawPokemon();
+            battle.drawMenu();
+            battle.drawHealthBars();
+
+            battle.checkInputs();
+
+            if (battle.checkForEnd()) {
+                 thing = false;
+            }
+
+            dc.redraw();
+            dc.pause(33);
+            dc.clear();
+        }
+        
         
         while (true) { // Testing Area
             
-            //battle.drawPokemon();
-            //battle.drawMenu();
-            //battle.drawHealthBars();
-            //battle.checkInputs();
+            
             
             playerI = (400+x)/size;
             playerJ = (448+y)/size;

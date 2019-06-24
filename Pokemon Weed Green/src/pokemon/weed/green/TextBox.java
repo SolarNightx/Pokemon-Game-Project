@@ -56,7 +56,7 @@ public class TextBox extends Interface {
             // Drawing Text
             // Textbox extends from/to 1 / 10 to 9 / 10, and down from/to 15 / 20 to 19 / 20
             dc.setFont(textFont);
-            dc.setPaint(blackLikeOurSouls);
+            dc.setPaint(blackText);
             for (int i = 0; i < text.length; i++) {
                 dc.drawString(text[i], consoleSize * 5 / 10, consoleSize * (16 + i * 2) / 20);
             }
@@ -81,7 +81,7 @@ public class TextBox extends Interface {
                 dc.drawRect(topLeft.x + i, topLeft.y - i, bottomRight.x - topLeft.x - i, bottomRight.y - topLeft.y + i);
             }
             // Text and bar
-            dc.setPaint(blackLikeOurSouls);
+            dc.setPaint(blackText);
             dc.setFont(healthBarFont);
             dc.drawString("HP: " + mon.HP + " / " + mon.maxHP, topLeft.x + 10, topLeft.y + 10);
             dc.setPaint(healthBarGreen);

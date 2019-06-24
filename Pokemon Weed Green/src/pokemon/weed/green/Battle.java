@@ -56,7 +56,7 @@ public class Battle {
     // Battle methods
     public void startTurn() {
         // Check speeds, then attack appropriately
-        if (activePlayerMon.speed > activeFoeMon.speed 
+        if (activePlayerMon.speed > activeFoeMon.speed
                 && storedFoeAttack.priority <= storedPlayerAttack.priority 
                 || storedPlayerAttack.priority > storedFoeAttack.priority) {
             playerAttack(storedPlayerAttack);
@@ -79,10 +79,10 @@ public class Battle {
     
     public void generateFoeMove() {
         // Self-explanitory
-        int randomNumber;
-        do {
+        int randomNumber = -1;
+        while (activeFoeMon.getMove(randomNumber) == null) {
             randomNumber = rng.nextInt(4);
-        } while (activeFoeMon.getMove(randomNumber) != null);
+        }
         storedFoeAttack = activeFoeMon.getMove(randomNumber);
     }
     
@@ -94,9 +94,10 @@ public class Battle {
     
     public void playerAttack(Moves storedPlayerAttack) {
         if (rng.nextInt(100) < (storedPlayerAttack.accuracy)) { // Accuracy Check (Prob will change.)
+            System.out.println(storedPlayerAttack.moveType.moveType);
             if (storedPlayerAttack.moveType.moveType == MType.PHYSICAL) {
                 // Random
-                random = (rng.nextInt(15) + 85) / 100;
+                random = (rng.nextDouble() * 15 + 85.0) / 100.0;
                 // modifier
                 if (activePlayerMon.type[0].type == storedPlayerAttack.type.type || activePlayerMon.type[1].type == storedPlayerAttack.type.type) {
                     stab = 1.50;
@@ -108,7 +109,7 @@ public class Battle {
                 damage = (int)((((2 + (2 * activePlayerMon.level / 5)) * storedPlayerAttack.power * (activePlayerMon.atk / activeFoeMon.def)) / 50 + 2) * modifier);
             } else if (storedPlayerAttack.moveType.moveType == MType.SPECIAL) {
                 // Random
-                random = (rng.nextInt(15) + 85) / 100;
+                random = (rng.nextDouble() * 15 + 85.0) / 100.0;
                 // modifier
                 if (activePlayerMon.type[0].type == storedPlayerAttack.type.type || activePlayerMon.type[1].type == storedPlayerAttack.type.type) {
                     stab = 1.50;
@@ -118,6 +119,8 @@ public class Battle {
                 modifier = stab * random; // More should be added
                 // Set damage
                 damage = (int)((((2 + (2 * activePlayerMon.level / 5)) * storedPlayerAttack.power * (activePlayerMon.specialAtk / activeFoeMon.specialDef)) / 50 + 2) * modifier);
+                // Do the damage
+                activeFoeMon.HP -= damage;
             }
             // Use the effect of the move
             storedPlayerAttack.useEffect(activeFoeMon, rng);
@@ -126,9 +129,10 @@ public class Battle {
     
     public void foeAttack(Moves storedFoeAttack) {
         if (rng.nextInt(100) < (storedFoeAttack.accuracy)) { // Accuracy Check (Prob will change.)
+            System.out.println(storedFoeAttack.moveType.moveType);
             if (storedFoeAttack.moveType.moveType == MType.PHYSICAL) {
                 // Random
-                random = (rng.nextInt(15) + 85) / 100;
+                random = (rng.nextDouble() * 15 + 85.0) / 100.0;
                 // modifier
                 if (activeFoeMon.type[0].type == storedFoeAttack.type.type || activeFoeMon.type[1].type == storedFoeAttack.type.type) {
                     stab = 1.50;
@@ -142,7 +146,7 @@ public class Battle {
                 activePlayerMon.HP -= damage;
             } else if (storedFoeAttack.moveType.moveType == MType.SPECIAL) {
                 // Random
-                random = (rng.nextInt(15) + 85) / 100;
+                random = (rng.nextDouble() * 15 + 85.0) / 100.0;
                 // modifier
                 if (activeFoeMon.type[0].type == storedFoeAttack.type.type || activeFoeMon.type[1].type == storedFoeAttack.type.type) {
                     stab = 1.50;
@@ -223,7 +227,8 @@ public class Battle {
                 this.generateFoeMove();
 
                 this.storedPlayerAttack = activePlayerMon.getMove(currentMenuOption);
-                this.startTurn();
+                this.startTurn();   
+                this.drawMainMenu();
             }
         } else {
             System.out.println("Did you really think that would work? Try a different menu!");
@@ -261,5 +266,16 @@ public class Battle {
     
     public void flee() {
         // Do of the fleeing and run away.
+    }
+    
+    public boolean checkForEnd() {
+        if (activePlayerMon.HP <= 0) {
+            activePlayerMon.HP = 0;
+            return true;
+        } else if (activeFoeMon.HP <= 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

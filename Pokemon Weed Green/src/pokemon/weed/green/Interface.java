@@ -21,7 +21,7 @@ public abstract class Interface {
     public static Color textBoxNight = new Color(0, 0, 30);
     public static Color temporaryBorderColour = new Color(150, 150, 200);
     public static Color healthBarGreen = new Color(150, 250, 200);
-    public static Color blackLikeOurSouls = new Color(0, 0, 1);
+    public static Color blackText = new Color(0, 0, 1);
     
     // Fonts
     public static Font menuFont = new Font("Comic Sans", Font.PLAIN, 20);
