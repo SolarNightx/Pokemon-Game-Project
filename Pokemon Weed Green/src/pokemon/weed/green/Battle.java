@@ -229,6 +229,7 @@ public class Battle {
                 this.storedPlayerAttack = activePlayerMon.getMove(currentMenuOption);
                 this.startTurn();   
                 this.drawMainMenu();
+                this.currentMenuOption = 0;
             }
         } else {
             System.out.println("Did you really think that would work? Try a different menu!");
