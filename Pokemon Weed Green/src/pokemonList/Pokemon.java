@@ -69,8 +69,16 @@ public abstract class Pokemon {
         System.out.println(this.name + ": Speed - " + this.speed);
     }
     
-    public void getEVYield(int[] EVYield){
+    public void setEVYield(int[] EVYield){
         this.EVYield = EVYield;
+    }
+    
+    public int[] getEVYield() {
+        return EVYield;
+    }
+    
+    public int[] getEVs() {
+        return this.EVs;
     }
 
     public void moveSet(Moves[] moves) {

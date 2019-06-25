@@ -31,12 +31,15 @@ public class PokemonWeedGreen {
         int playerJ = (400+y)/size;
         
         char direction = 'd';
+        
+        boolean inTextBox = false;
 
         Decode decode = new Decode("World.txt");
 
         Tiles[][] worldTiles = new Tiles[decode.getX()][decode.getY()];
         Objects[][] worldObjects = new Objects[decode.getX()][decode.getY()];
         NPCs[][] worldNPCs = new NPCs[decode.getX()][decode.getY()];
+        NPCs targetNPC = null;
 
         int[][] tiles = new int[decode.getX()][decode.getY()];
         int[][] objects = new int[decode.getX()][decode.getY()];
@@ -154,49 +157,48 @@ public class PokemonWeedGreen {
 
         }
 
+        
         dc.setOrigin(DConsole.ORIGIN_TOP_LEFT);
-        Pokemon[] pokemon1 = new Pokemon[6];
-        Pokemon[] pokemon2 = new Pokemon[6];
+        Pokemon[] playerMons = new Pokemon[6];
+        Pokemon[] foeMons = new Pokemon[6];
         
-        pokemon1[0] = new Empoleon("Empoleon", 36);
-        pokemon1[0].setMove(0, new Surf());
-        pokemon1[0].setMove(1, new flashCannon());
-        pokemon1[0].setMove(2, new Tackle());
-        pokemon1[0].setMove(3, new quickAattack());
+        playerMons[0] = new Empoleon("Empoleon", 36);
+        playerMons[0].setMove(0, new Surf());
+        playerMons[0].setMove(1, new flashCannon());
+        playerMons[0].setMove(2, new Tackle());
+        playerMons[0].setMove(3, new quickAattack());
         
-        pokemon2[0] = new Luxray("Luxray", 40);
-        pokemon2[0].setMove(0, new thunderFang());
-        pokemon2[0].setMove(1, new quickAattack());
+        foeMons[0] = new Luxray("Luxray", 40);
+        foeMons[0].setMove(0, new thunderFang());
+        foeMons[0].setMove(1, new quickAattack());
         
         /*pokemon2[0] = new Bidoof("Bidoof", 100);
         pokemon2[0].setMove(0, new Tackle());
         pokemon2[0].setMove(1, new baiLol());
         pokemon2[0].setMove(2, new quickAattack());*/
         
-        Battle battle = new Battle(dc, pokemon1, pokemon2);
+        Battle battle = new Battle(dc, playerMons, foeMons);
         battle.drawMainMenu();
-        boolean thing = true;
-        
-        while (thing) {
-            battle.drawPokemon();
-            battle.drawMenu();
-            battle.drawHealthBars();
-
-            battle.checkInputs();
-
-            if (battle.checkForEnd()) {
-                 thing = false;
-            }
-
-            dc.redraw();
-            dc.pause(33);
-            dc.clear();
-        }
-        
+        boolean inBattle = true;
+        System.out.println("Battle Start: Empoleon vs Luxray | Player vs Raging Pokemon");
         
         while (true) { // Testing Area
             
-            
+            while (inBattle) {
+                battle.drawPokemon();
+                battle.drawMenu();
+                battle.drawHealthBars();
+
+                battle.checkInputs();
+
+                if (battle.checkForEnd()) {
+                     inBattle = false;
+                }
+                
+                dc.redraw();
+                dc.pause(33);
+                dc.clear();
+            }
             
             playerI = (400+x)/size;
             playerJ = (448+y)/size;
@@ -211,26 +213,28 @@ public class PokemonWeedGreen {
                 y -= size/3;
             }
             
-            if (dc.isKeyPressed(38) && goalX == x && goalY == y && worldTiles[playerI][playerJ-1].getCollide() == false) { // up
-                //System.out.println('u');
-                goalY -= size;
-                direction = 'u';
-            } else if (dc.isKeyPressed(40) && goalX == x && goalY == y && worldTiles[playerI][playerJ+1].getCollide() == false) { // down
-                //System.out.println('d');
-                goalY += size;
-                direction = 'd';
-            }
+            // Player Movement
+            if (!inTextBox) {
+                if (dc.isKeyPressed(38) && goalX == x && goalY == y && worldTiles[playerI][playerJ-1].getCollide() == false) { // up
+                    //System.out.println('u');
+                    goalY -= size;
+                    direction = 'u';
+                } else if (dc.isKeyPressed(40) && goalX == x && goalY == y && worldTiles[playerI][playerJ+1].getCollide() == false) { // down
+                    //System.out.println('d');
+                    goalY += size;
+                    direction = 'd';
+                }
 
-            if (dc.isKeyPressed(39) && goalX == x && goalY == y && worldTiles[playerI+1][playerJ].getCollide() == false) { // right
-                //System.out.println('r');
-                goalX += size;
-                direction = 'r';
-            } else if (dc.isKeyPressed(37) && goalX == x && goalY == y && worldTiles[playerI-1][playerJ].getCollide() == false) { // left
-                //System.out.println('l');
-                goalX -= size;
-                direction = 'l';
+                if (dc.isKeyPressed(39) && goalX == x && goalY == y && worldTiles[playerI+1][playerJ].getCollide() == false) { // right
+                    //System.out.println('r');
+                    goalX += size;
+                    direction = 'r';
+                } else if (dc.isKeyPressed(37) && goalX == x && goalY == y && worldTiles[playerI-1][playerJ].getCollide() == false) { // left
+                    //System.out.println('l');
+                    goalX -= size;
+                    direction = 'l';
+                }
             }
-            
             //------------------- Drawing -----------------------
             
             dc.clear();
@@ -271,21 +275,46 @@ public class PokemonWeedGreen {
                     break;
             }
             
-            if (worldNPCs[playerI][playerJ+1] != null && direction == 'd' && dc.isKeyPressed(' ')) {
-                //System.out.println(worldNPCs[playerI][playerJ+1].getText());
-                worldNPCs[playerI][playerJ + 1].drawTextBox();
-                if (worldNPCs[playerI][playerJ + 1].getBattle()) {
-                    
+            // NPC Conversations and Battles
+            if (dc.getKeyPress(' ')) {
+                if (inTextBox) { // End Text Box
+                    inTextBox = false;
+                    if (targetNPC.getBattle()) { // Start battle
+                        foeMons[0] = new Torterra("Torterra", 34);
+                        foeMons[0].setMove(0, new Earthquake());
+                        foeMons[0].setMove(1, new seedBomb());
+                        
+                        battle = new Battle(dc, playerMons, foeMons);
+                        battle.drawMainMenu();
+                        battle.currentMenuOption = 0;
+                        inBattle = true;
+                        
+                        System.out.println("Battle Start: Empoleon vs Torterra | Player vs Angry Old Man");
+                    } else { // Do some healing
+                        playerMons[0].heal();
+                    }
+                } else { // Start Text Box
+                    if (worldNPCs[playerI][playerJ+1] != null && direction == 'd'
+                            || worldNPCs[playerI][playerJ-1] != null && direction == 'u'
+                            || worldNPCs[playerI-1][playerJ] != null && direction == 'l'
+                            || worldNPCs[playerI+1][playerJ] != null && direction == 'r') {
+                        inTextBox = true;
+                    }
+                    if (direction == 'd') {
+                        targetNPC = worldNPCs[playerI][playerJ + 1];
+                    } else if (direction == 'u') {
+                        targetNPC = worldNPCs[playerI][playerJ - 1];
+                    } else if (direction == 'l') {
+                        targetNPC = worldNPCs[playerI-1][playerJ];
+                    } else if (direction == 'r') {
+                        targetNPC = worldNPCs[playerI+1][playerJ];
+                    }
                 }
-            } else if (worldNPCs[playerI][playerJ-1] != null && direction == 'u' && dc.isKeyPressed(' ')) {
-                //System.out.println(worldNPCs[playerI][playerJ-1].getText());
-                worldNPCs[playerI][playerJ - 1].drawTextBox();
-            } else if (worldNPCs[playerI-1][playerJ] != null && direction == 'l' && dc.isKeyPressed(' ')) {
-                //System.out.println(worldNPCs[playerI-1][playerJ].getText());
-                worldNPCs[playerI-1][playerJ].drawTextBox();
-            } else if (worldNPCs[playerI+1][playerJ] != null && direction == 'r' && dc.isKeyPressed(' ')) {
-                //System.out.println(worldNPCs[playerI+1][playerJ].getText());
-                worldNPCs[playerI+1][playerJ].drawTextBox();
+            }
+            
+            // Draw the text boxes
+            if (inTextBox && targetNPC != null) { 
+                targetNPC.drawTextBox();
             }
             
             dc.redraw();

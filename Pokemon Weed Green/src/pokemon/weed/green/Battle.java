@@ -94,7 +94,6 @@ public class Battle {
     
     public void playerAttack(Moves storedPlayerAttack) {
         if (rng.nextInt(100) < (storedPlayerAttack.accuracy)) { // Accuracy Check (Prob will change.)
-            System.out.println(storedPlayerAttack.moveType.moveType);
             if (storedPlayerAttack.moveType.moveType == MType.PHYSICAL) {
                 // Random
                 random = (rng.nextDouble() * 15 + 85.0) / 100.0;
@@ -107,6 +106,11 @@ public class Battle {
                 modifier = stab * random; // More should be added
                 // Set damage
                 damage = (int)((((2 + (2 * activePlayerMon.level / 5)) * storedPlayerAttack.power * (activePlayerMon.atk / activeFoeMon.def)) / 50 + 2) * modifier);
+                if (damage == 0) {
+                    damage = 1;
+                }
+                // Do the damage
+                activeFoeMon.HP -= damage;
             } else if (storedPlayerAttack.moveType.moveType == MType.SPECIAL) {
                 // Random
                 random = (rng.nextDouble() * 15 + 85.0) / 100.0;
@@ -119,6 +123,9 @@ public class Battle {
                 modifier = stab * random; // More should be added
                 // Set damage
                 damage = (int)((((2 + (2 * activePlayerMon.level / 5)) * storedPlayerAttack.power * (activePlayerMon.specialAtk / activeFoeMon.specialDef)) / 50 + 2) * modifier);
+                if (damage == 0) {
+                    damage = 1;
+                }
                 // Do the damage
                 activeFoeMon.HP -= damage;
             }
@@ -129,7 +136,7 @@ public class Battle {
     
     public void foeAttack(Moves storedFoeAttack) {
         if (rng.nextInt(100) < (storedFoeAttack.accuracy)) { // Accuracy Check (Prob will change.)
-            System.out.println(storedFoeAttack.moveType.moveType);
+            
             if (storedFoeAttack.moveType.moveType == MType.PHYSICAL) {
                 // Random
                 random = (rng.nextDouble() * 15 + 85.0) / 100.0;
@@ -142,6 +149,9 @@ public class Battle {
                 modifier = stab * random; // More should be added
                 // Set damage
                 damage = (int)((((2 + (2 * activeFoeMon.level / 5)) * storedFoeAttack.power * (activeFoeMon.atk / activePlayerMon.def)) / 50 + 2) * modifier);
+                if (damage == 0) {
+                    damage = 1;
+                }
                 // You still take the damage!!!!! We should animate this later with a different display HP variable.
                 activePlayerMon.HP -= damage;
             } else if (storedFoeAttack.moveType.moveType == MType.SPECIAL) {
@@ -156,6 +166,9 @@ public class Battle {
                 modifier = stab * random; // More should be added
                 // Set damage
                 damage = (int)((((2 + (2 * activeFoeMon.level / 5)) * storedFoeAttack.power * (activeFoeMon.specialAtk / activePlayerMon.specialDef)) / 50 + 2) * modifier);
+                if (damage == 0) {
+                    damage = 1;
+                }
                 // You still take the damage!!!!! We should animate this later.
                 activePlayerMon.HP -= damage;
             }
@@ -271,9 +284,12 @@ public class Battle {
     
     public boolean checkForEnd() {
         if (activePlayerMon.HP <= 0) {
-            activePlayerMon.HP = 0;
+            activePlayerMon.HP = 1;
             return true;
         } else if (activeFoeMon.HP <= 0) {
+            for (int i = 0; i < 6; i++) {
+                activePlayerMon.getEVs()[i] += activeFoeMon.getEVYield()[i];
+            }
             return true;
         } else {
             return false;
