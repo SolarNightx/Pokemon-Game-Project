@@ -13,9 +13,15 @@ import DLibX.DConsole;
  */
 public class Grass extends Tiles {
     
-    public Grass(int x, int y, boolean collide, DConsole dc) {
-        super(x, y, collide, dc);
+    public Grass(int x, int y, DConsole dc, Tiles[][] tiles) {
+        super(x, y, false, dc);
+        this.tiles = tiles;
         filename = "Tiles/grass.png";
+    }
+    
+    @Override
+    public void update(int i, int j) {
+        
     }
     
 }

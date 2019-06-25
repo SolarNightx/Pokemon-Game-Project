@@ -5,10 +5,39 @@
  */
 package Objects;
 
+import DLibX.DConsole;
+
 /**
  *
  * @author Darren H
  */
 public abstract class Objects {
+    
+    int x;
+    int y;
+    boolean collide;
+    
+    String filename;
+    
+    Objects[][] objects;
+
+    DConsole dc;
+    
+    public Objects(int x, int y, boolean collide, DConsole dc) {
+        this.x = x;
+        this.y = y;
+        this.collide = collide;
+        this.dc = dc;
+    }
+    
+    //public void draw(int offX, int offY) {
+    //    dc.drawImage(filename, x - offX, y - offY);
+    //}
+    
+    public abstract void draw(int offX, int offY);
+    
+    public void newFile(String filename) {
+        this.filename = filename;
+    }
     
 }

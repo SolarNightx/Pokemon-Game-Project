@@ -19,14 +19,14 @@ public class Encode {
     public Encode(String filename, int x, int y) {
         
         try {
-            output = new PrintStream(new File(filename));
+            this.output = new PrintStream(new File(filename));
         } catch (Exception e) {
             // handle the error here
             System.out.println("Something bad happened");
         }
 
-        output.println(x);
-        output.println(y);
+        this.output.println(x);
+        this.output.println(y);
 
     }
 
@@ -34,14 +34,22 @@ public class Encode {
         
         for (int i = 0; i < world.length; i++) {
             for (int j = 0; j < world[i].length; j++) {
-                output.println(world[i][j]);
+                this.output.println(world[i][j]);
             }
         }
         
     }
     
     public void singleVal(int x) {
-        output.println(x);
+        this.output.println(x);
+    }
+    
+    public void singleString(String string) {
+        this.output.println(string);
+    }
+    
+    public void singleBoolean(boolean b) {
+        this.output.println(b);
     }
 
 }

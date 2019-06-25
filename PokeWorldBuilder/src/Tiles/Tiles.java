@@ -20,6 +20,8 @@ public abstract class Tiles {
     int sendX;
     int sendY;
     String filename;
+    
+    Tiles[][] tiles;
 
     DConsole dc;
     
@@ -44,4 +46,11 @@ public abstract class Tiles {
     public void draw(int offX, int offY) {
         dc.drawImage(filename, x - offX, y - offY);
     }
+    
+    public void newFile(String filename) {
+        this.filename = filename;
+    }
+    
+    public abstract void update(int i, int j);
+    
 }

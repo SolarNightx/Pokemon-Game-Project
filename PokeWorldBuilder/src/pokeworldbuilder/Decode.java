@@ -74,4 +74,12 @@ public class Decode {
         return this.fileReader.nextInt();
     }
     
+    public String singleString() {
+        return this.fileReader.nextLine();
+    }
+    
+    public boolean singleBoolean() {
+        return this.fileReader.nextBoolean();
+    }
+    
 }
