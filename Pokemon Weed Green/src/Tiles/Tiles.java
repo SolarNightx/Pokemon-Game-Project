@@ -46,6 +46,6 @@ public abstract class Tiles {
         this.filename = filename;
     }
     
-    public abstract void update(int i, int j);
+    public abstract void update(int i, int j); // makes diffrent shape of tile based on surroundings
     
 }
