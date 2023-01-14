@@ -1,1 +1,1 @@
-# Pokemon Weed Green
+# Pokemon Hyper Green
